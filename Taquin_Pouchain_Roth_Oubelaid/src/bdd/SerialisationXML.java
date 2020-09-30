@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taquin_pouchain_roth_oubelaid;
+package bdd;
 
 /**
  *
  * @author Perso
  */
-public class Case {
+public class SerialisationXML {
     
 }

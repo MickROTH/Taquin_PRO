@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taquin_pouchain_roth_oubelaid;
+package partie;
 
 /**
  *
  * @author Perso
  */
-public class ConnexionBDD {
+public class Partie {
     
 }
