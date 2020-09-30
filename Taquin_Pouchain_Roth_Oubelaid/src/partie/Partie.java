@@ -25,47 +25,7 @@ public class Partie {
      * Il peut y avoir un ou deux joueurs dans une partie.
      */
     private Joueur[] joueurs;
-    
-    /**
-     * @return Le type de la partie (ex : "SOLO", "COOP" ou "VERSUS")
-     */
-    public String getType(){
-        return this.type;
-    }
 
-    /**
-     * @return La grille de taquin sur laquelle se déroule la partie
-     */
-    public Grille getGrille(){
-        return this.grille;
-    }
-        
-    /**
-     * @return Une copie de la liste des joueurs de la partie
-     */
-    public Joueur[] getJoueurs(){
-        return this.joueurs.clone();
-    }
-    
-    /**
-     * Méthode privée instanciant la liste des joueurs de la partie après vérification de sa cohérence.
-     * @param joueurs Liste de joueurs
-     * @throws IllegalArgumentException S'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
-     */
-    private void setJoueurs(Joueur[] joueurs){
-        if(joueurs.length == 0 || joueurs.length > 2){
-            throw new IllegalArgumentException("Nombre de joueurs compris entre 1 et 2 inclus uniquement.");
-        }
-        if(joueurs.length == 1 && !this.type.equals(Type.SOLO)){
-            throw new IllegalArgumentException("Une partie SOLO se joue obligatoirement seul.");
-        }
-        if(joueurs.length == 2 && this.type.equals(Type.SOLO)){
-            throw new IllegalArgumentException("Une partie COOP ou VERSUS se joue obligatoirement à 2.");
-        }
-        this.joueurs = joueurs;
-    }
-    
-    
     /**
      * Constructeur privé : Crée une partie de taquin mais sans préciser le(s) joueur(s).
      * @param type Type de partie (SOLO, COOP ou VERSUS)
@@ -122,10 +82,50 @@ public class Partie {
         joueurs[0] = j1;
         this.setJoueurs(joueurs);
     }
+        
+    /**
+     * @return Le type de la partie (ex : "SOLO", "COOP" ou "VERSUS")
+     */
+    public String getType(){
+        return this.type;
+    }
+
+    /**
+     * @return La grille de taquin sur laquelle se déroule la partie
+     */
+    public Grille getGrille(){
+        return this.grille;
+    }
+        
+    /**
+     * @return Une copie de la liste des joueurs de la partie
+     */
+    public Joueur[] getJoueurs(){
+        return this.joueurs.clone();
+    }
+    
+    /**
+     * Méthode privée instanciant la liste des joueurs de la partie après vérification de sa cohérence.
+     * @param joueurs Liste de joueurs
+     * @throws IllegalArgumentException S'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
+     */
+    private void setJoueurs(Joueur[] joueurs){
+        if(joueurs.length == 0 || joueurs.length > 2){
+            throw new IllegalArgumentException("Nombre de joueurs compris entre 1 et 2 inclus uniquement.");
+        }
+        if(joueurs.length == 1 && !this.type.equals(Type.SOLO)){
+            throw new IllegalArgumentException("Une partie SOLO se joue obligatoirement seul.");
+        }
+        if(joueurs.length == 2 && this.type.equals(Type.SOLO)){
+            throw new IllegalArgumentException("Une partie COOP ou VERSUS se joue obligatoirement à 2.");
+        }
+        this.joueurs = joueurs;
+    }
+    
     
     
     /**
-     * Rescence les différents types de partie connus et fourni des fonctions y afférent.
+     * Classe interne accessible à tous qui rescence les différents types de partie connus et fourni des fonctions y afférent.
      */
     public static class Type{
         /**
