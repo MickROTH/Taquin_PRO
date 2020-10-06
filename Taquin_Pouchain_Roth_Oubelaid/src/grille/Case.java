@@ -14,11 +14,12 @@ public class Case {
     int x;
     int y; 
     
+
     public void Case(){
         
     }
     
-    
+
     public void Case(int value, int cooX, int cooY){
         this.valeur = value; 
         this.x = cooX; 
@@ -29,11 +30,12 @@ public class Case {
         return this.valeur;
     }
     
+
     public void setValue(int uneVal ){
         this.valeur =  uneVal;
     }
     
-    
+
    @Override
    public String toString(){
        return (String.valueOf(this.valeur)); 

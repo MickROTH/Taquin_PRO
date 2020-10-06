@@ -14,6 +14,7 @@ public class Grille {
     private String image ;
     private int taille;
     
+
     
     public void Grille(int uneTaille, boolean estObjectif){
         this.grilleCase =  new Case[uneTaille][uneTaille];
@@ -41,7 +42,7 @@ public class Grille {
          
         this.taille =  uneTaille; 
     }
-   
+
     public Case[][] getGrille(){
         return grilleCase;
     }
@@ -63,6 +64,7 @@ public class Grille {
         return text; 
     }
     
+
     // cette méthode servira principalement a comparer si la grille courante, à la grille objectif ( voir si la partie est fini)
     public boolean estPareil(Grille autreGrille){
         boolean bool= true ;
@@ -75,6 +77,7 @@ public class Grille {
         }
         return bool;
     }
+
 
     
     
