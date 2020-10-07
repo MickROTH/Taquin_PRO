@@ -7,8 +7,15 @@ package partie;
 
 /**
  *
- * @author micka
+ * @author sunny
  */
 public interface Parametres {
-    
+    //Attributs de la classe. 
+    /** 
+     * La case peut prendre 4 directions
+     */
+    public static final int HAUT=0;
+    public static final int BAS=1;
+    public static final int GAUCHE=2;
+    public static final int DROITE=3;            
 }
