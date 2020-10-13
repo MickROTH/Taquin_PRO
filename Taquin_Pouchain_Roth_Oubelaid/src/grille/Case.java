@@ -14,7 +14,7 @@ public class Case {
     private int valeur; 
     int x;
     int y; 
-    
+
     /**
      * Constructeur vide de la classe Case
      */
@@ -46,10 +46,25 @@ public class Case {
      * permet de modifier la valeur de la case
      * @param uneVal 
      */
-    public void setValue(int uneVal ){
+
+    void setValue(int uneVal ){
         this.valeur =  uneVal;
     }
     
+     /**
+     * permet de permuter les coordonnée de deux cases
+     * @param uneVal 
+     */
+    void permuteCoo(Case autreCase ){
+        Case temp = new Case();
+        temp.x =  this.x;
+        temp.y =  this.y ; 
+        this.x =  autreCase.x ; 
+        this.y =  autreCase.y; 
+        autreCase.x = temp.x; 
+        autreCase.y =  temp.y;
+    }
+
     /**
      * Afficher la valeur de la case 
      * @return 
