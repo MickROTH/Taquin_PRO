@@ -14,7 +14,6 @@ public class Case {
     private int valeur; 
     int x;
     int y; 
-    
 
     /**
      * Constructeur vide de la classe Case
@@ -47,6 +46,7 @@ public class Case {
      * permet de modifier la valeur de la case
      * @param uneVal 
      */
+
     void setValue(int uneVal ){
         this.valeur =  uneVal;
     }
@@ -64,7 +64,7 @@ public class Case {
         autreCase.x = temp.x; 
         autreCase.y =  temp.y;
     }
-    
+
     /**
      * Afficher la valeur de la case 
      * @return 

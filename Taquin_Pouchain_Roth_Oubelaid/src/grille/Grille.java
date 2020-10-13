@@ -21,6 +21,7 @@ public class Grille {
      * @param uneTaille la taille hauteur et largeur de la grille 
      */
     public void Grille(int uneTaille){
+
         this.grilleCase =  new Case[uneTaille][uneTaille];
         int compteur =0; 
         //valuer les case de 0 à  taille*taille-1
@@ -76,6 +77,7 @@ public class Grille {
      * @param autreGrille
      * @return 
      */
+
     @Override
     public boolean equals(Object autreGrille) {
         boolean bool ; 
