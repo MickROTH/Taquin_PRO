@@ -20,4 +20,5 @@ public interface IPartie {
     public void reprendre();
     public void prochainTour();
     public void estFinie();
+    public boolean typePartieEstConnu(TypePartie typeTest);
 }
