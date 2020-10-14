@@ -9,13 +9,14 @@ package partie;
  *
  * @author sunny
  */
-public interface Parametres {
+public enum Direction {
     //Attributs de la classe. 
     /** 
      * La case peut prendre 4 directions
      */
-    public static final int HAUT=0;
-    public static final int BAS=1;
-    public static final int GAUCHE=2;
-    public static final int DROITE=3;            
+    HAUT,
+    BAS,
+    GAUCHE,
+    DROITE,  
 }
+// coucou j'ai fini
