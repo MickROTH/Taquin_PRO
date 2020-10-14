@@ -15,10 +15,11 @@ public class Case {
     int x;
     int y; 
 
+
     /**
      * Constructeur vide de la classe Case
      */
-    public void Case(){
+    public Case(){
         
     }
     
@@ -28,7 +29,7 @@ public class Case {
      * @param cooX la coordonnée en X (lignes) 
      * @param cooY la coordonnée en Y (colonnes)
      */
-    public void Case(int value, int cooX, int cooY){
+    public Case(int value, int cooX, int cooY){
         this.valeur = value; 
         this.x = cooX; 
         this.y = cooY; 

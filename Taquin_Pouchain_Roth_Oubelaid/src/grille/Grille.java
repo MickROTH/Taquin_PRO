@@ -14,20 +14,22 @@ public class Grille {
     private Case[][] grilleCase ;
     private String image ;
     private int taille;
+
+   
     
 
     /**
      * constructeur de la classe 
      * @param uneTaille la taille hauteur et largeur de la grille 
      */
-    public void Grille(int uneTaille){
-
+     public Grille(int uneTaille){
         this.grilleCase =  new Case[uneTaille][uneTaille];
         int compteur =0; 
         //valuer les case de 0 à  taille*taille-1
          for (int i = 0; i < this.grilleCase.length; i++) {
             for (int j = 0; j < this.grilleCase[i].length; j++) {
-                this.grilleCase[i][j].setValue(compteur);
+                
+                this.grilleCase[i][j] = new Case(compteur, i, j);
                 compteur ++ ; 
             }
         }
@@ -64,7 +66,13 @@ public class Grille {
         String text ="[";
         for (int i = 0; i < this.grilleCase.length; i++) {
             for (int j = 0; j < this.grilleCase[i].length; j++) {
-                text += " " + this.grilleCase[i][j].getValue() + " |";
+                if (this.grilleCase[i][j].getValue()== (this.taille * this.taille)-1) {
+                      text += " " + "--" + " |";
+                }
+                else{
+                     text += " " + this.grilleCase[i][j].getValue() + " |";
+                }
+               
             }
             text += '\n';
         }
@@ -105,10 +113,10 @@ public class Grille {
          Case temp = new Case();
          
          //avoir des coordonnées aléatoires
-                int random1 = 0 + (int)(Math.random() * ((this.grilleCase.length - 0) + 1));
-                int random2 = 0 + (int)(Math.random() * ((this.grilleCase.length - 0) + 1));
-                int random3 = 0 + (int)(Math.random() * ((this.grilleCase.length - 0) + 1));
-                int random4 = 0 + (int)(Math.random() * ((this.grilleCase.length - 0) + 1));
+                int random1 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
+                int random2 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
+                int random3 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
+                int random4 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
                 
                 //permuter les coordonnées
                 this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random3][random4]);
