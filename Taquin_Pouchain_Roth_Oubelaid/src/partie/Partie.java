@@ -2,6 +2,7 @@ package partie;
 
 import grille.Grille;
 import joueur.Joueur;
+import partie.TypePartie;
 
 /**
  * Représente une partie de taquin jouée par un ou deux joueurs.
@@ -11,9 +12,9 @@ import joueur.Joueur;
  */
 public class Partie {
     /**
-     * @attribute Type de partie parmis SOLO, COOP, VERSUS
+     * @attribute Type de partie (par exemple : SOLO, COOP, VERSUS)
      */
-    private String type;
+    private TypePartie type;
     
     /**
      * @attribute Grille de taquin sur laquelle se déroule la partie.
@@ -32,8 +33,8 @@ public class Partie {
      * @param grille La grille de taquin
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus.
      */
-    private Partie(String type, Grille grille){
-        if(!Type.estConnu(type)){
+    private Partie(TypePartie type, Grille grille){
+        if(!typePartieEstConnu(type)){
             throw new IllegalArgumentException("Ce type de partie n'est pas connu : " + type);
         }
         this.grille = grille;
@@ -47,7 +48,7 @@ public class Partie {
      * @param joueurs Le ou les joueur(s) de cette partie
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(String type, Grille grille, Joueur[] joueurs){
+    public Partie(TypePartie type, Grille grille, Joueur[] joueurs){
         this(type, grille);
         this.setJoueurs(joueurs);
     }
@@ -60,7 +61,7 @@ public class Partie {
      * @param j2 Joueur 2
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(String type, Grille grille, Joueur j1, Joueur j2){
+    public Partie(TypePartie type, Grille grille, Joueur j1, Joueur j2){
         this(type, grille);
         joueurs = new Joueur[2];
         joueurs[0] = j1;
@@ -76,7 +77,7 @@ public class Partie {
      * @param j2 Joueur 2
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(String type, Grille grille, Joueur j1){
+    public Partie(TypePartie type, Grille grille, Joueur j1){
         this(type, grille);
         joueurs = new Joueur[1];
         joueurs[0] = j1;
@@ -86,7 +87,7 @@ public class Partie {
     /**
      * @return Le type de la partie (ex : "SOLO", "COOP" ou "VERSUS")
      */
-    public String getType(){
+    public TypePartie getType(){
         return this.type;
     }
 
@@ -113,41 +114,26 @@ public class Partie {
         if(joueurs.length == 0 || joueurs.length > 2){
             throw new IllegalArgumentException("Nombre de joueurs compris entre 1 et 2 inclus uniquement.");
         }
-        if(joueurs.length == 1 && !this.type.equals(Type.SOLO)){
+        if(joueurs.length == 1 && !this.type.equals(TypePartie.SOLO)){
             throw new IllegalArgumentException("Une partie SOLO se joue obligatoirement seul.");
         }
-        if(joueurs.length == 2 && this.type.equals(Type.SOLO)){
+        if(joueurs.length == 2 && this.type.equals(TypePartie.SOLO)){
             throw new IllegalArgumentException("Une partie COOP ou VERSUS se joue obligatoirement à 2.");
         }
         this.joueurs = joueurs;
     }
     
-    
-    
     /**
-     * Classe interne accessible à tous qui rescence les différents types de partie connus et fourni des fonctions y afférent.
+     * Vérifie si le type de partie donné fait partie des type des parties connus.
+     * @param typeTest Le type de partie à tester
+     * @return True si le type est connu
      */
-    public static class Type{
-        /**
-         * Type de partie : solo.
-         */
-        public static final String SOLO = "SOLO";
-        /**
-         * Type de partie : coopération avec un 2ème joueur.
-         */
-        public static final String COOP = "COOP";
-        /**
-         * Type de partie : confrontation avec un 2ème joueur.
-         */
-        public static final String VERSUS = "VERSUS";
-        
-        /**
-         * Teste si un type donné correspond aux types de partie connus
-         * @param type Type de partie à tester
-         * @return True si le type donné correspond à un type connu
-         */
-        public static boolean estConnu(String type){
-            return (type.equals(SOLO) || type.equals(COOP) || type.equals(VERSUS));
+    public boolean typePartieEstConnu(TypePartie typeTest){
+        for (TypePartie typeConnu : TypePartie.values()) {
+            if (typeConnu.equals(typeTest)) {
+                return true;
+            }
         }
+        return false;
     }
 }
