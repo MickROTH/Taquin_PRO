@@ -7,8 +7,16 @@ package partie;
 
 /**
  *
- * @author micka
+ * @author sunny
  */
-public interface Parametres {
-    
+public enum Direction {
+    //Attributs de la classe. 
+    /** 
+     * La case peut prendre 4 directions
+     */
+    HAUT,
+    BAS,
+    GAUCHE,
+    DROITE,  
 }
+// coucou j'ai fini

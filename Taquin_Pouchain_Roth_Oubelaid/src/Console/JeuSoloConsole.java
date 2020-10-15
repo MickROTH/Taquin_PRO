@@ -58,6 +58,7 @@ public class JeuSoloConsole extends Application {
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 ");
         
+
         //on veut éviter que le pseudo soit null ou sans caractère
         while (!estValide) {
         //création du joueur 
@@ -87,6 +88,7 @@ public class JeuSoloConsole extends Application {
         estValide = false ;
         //on veut éviter que la grille soit inférieur ou égale a une case de large 
         while (!estValide) {
+          
             //Faire saisir une taille de grille
             System.out.println("Quel taille de plateau souhaitez vous ? ");
             sc = new Scanner(System.in);
@@ -96,6 +98,7 @@ public class JeuSoloConsole extends Application {
 
             //controle de saisie 
             try {
+
                 try{
                      tailleGrille = Integer.parseInt(reponse);
                 }
@@ -137,6 +140,7 @@ public class JeuSoloConsole extends Application {
             System.out.println("Vous avez gagner la partie ! ");
         }
         
+
     }
 
     /**
