@@ -23,7 +23,11 @@ public class Grille {
      * @param uneTaille la taille hauteur et largeur de la grille 
      */
      public Grille(int uneTaille){
-        this.grilleCase =  new Case[uneTaille][uneTaille];
+
+        
+             if (uneTaille > 1) {
+               this.grilleCase =  new Case[uneTaille][uneTaille];
+
         int compteur =0; 
         //valuer les case de 0 à  taille*taille-1
          for (int i = 0; i < this.grilleCase.length; i++) {
@@ -34,6 +38,12 @@ public class Grille {
             }
         }
         this.taille =  uneTaille; 
+         }
+         else{
+            throw new IllegalArgumentException("La grille ne peut pas être de taille inférieur ou égale à 1.");
+         }
+         
+         
     }
     
     
