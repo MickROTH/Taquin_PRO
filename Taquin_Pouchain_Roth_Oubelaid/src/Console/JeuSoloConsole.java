@@ -40,23 +40,53 @@ public class JeuSoloConsole extends Application {
 " '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   ");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
 
+        //variable de controle de saisie 
+        boolean estValide= false ;
+        //Le pseudo
+        String lePseudo =""; 
+        //Le joueur
+        Joueur leJoueur;
+        //Permet de récupéré les données saisie par l'utilisateur 
+        Scanner sc;
+        //Taille de la grille
+        int tailleGrille = 0;
+        //La grille 
+        Grille laGrille;
+        //La grille objectif
+        Grille grilleObjectif;
+        
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 ");
         
+        //on veut éviter que le pseudo soit null ou sans caractère
+        while (!estValide) {
         //création du joueur 
         System.out.println("Veuillez saisir votre pseudo \n");
-        Scanner sc = new Scanner(System.in);
+         sc = new Scanner(System.in);
 
         //récupération du choix du joueur
-        String lepseudo = sc.nextLine().toString();
+        lePseudo = sc.nextLine().toString();
         
-        //Instanciation du joueur
-        Joueur lejoueur = new Joueur(lepseudo);
+            try{
+                // test Instanciation du joueur
+                leJoueur = new Joueur(lePseudo);
+                
+                //validation du format
+                estValide= true ;
+            }
+            catch(Exception e){
+                   //création du joueur 
+            System.out.println(e.getMessage());
+            }
+        }
 
-        //initialisation temporaire en attente de la saisi utilisateur 
-        int tailleGrille = -1;
+        //Instanciation du joueur
+        leJoueur = new Joueur(lePseudo);
+
+        //controle de saisie 
+        estValide = false ;
         //on veut éviter que la grille soit inférieur ou égale a une case de large 
-        while (tailleGrille <=  1) {
+        while (!estValide) {
             //Faire saisir une taille de grille
             System.out.println("Quel taille de plateau souhaitez vous ? ");
             sc = new Scanner(System.in);
@@ -66,29 +96,47 @@ public class JeuSoloConsole extends Application {
 
             //controle de saisie 
             try {
-                tailleGrille = Integer.parseInt(reponse);
-                if(tailleGrille <= 1){
-                    System.out.println("Attention il est pas possible de faire un taquin de taille inférieur à 1");
+                try{
+                     tailleGrille = Integer.parseInt(reponse);
                 }
-                
+                catch(Exception e ){
+                    System.out.println("Erreur il faut saisir un nombre.");
+                }
+               
+                //test création de la grille 
+                laGrille =  new Grille (tailleGrille);
+               
+                //validation du format 
+                estValide = true ; 
             }
             //si le ligne saisie par l'utilisateur n'est pas un entier ou si l'entier est inférieur à 1  
             catch (Exception e) {
-                System.out.println("Attention veuillez saisir un nombre supérieur à 0");
-
+                System.out.println(e.getMessage());
             }
         }
         //création de la grille 
-        Grille lagrille =  new Grille (tailleGrille);
-        lagrille.melangeGrille(tailleGrille * 10);
-        
-  
-        
+        laGrille = new Grille(tailleGrille);
+        grilleObjectif = new Grille(tailleGrille);
+        laGrille.melangeGrille(tailleGrille * 10);
+
         //Création de la partie 
-        Partie lapartie = new Partie ("SOLO", lagrille, lejoueur);
-        System.out.println(lapartie.getGrille().toString());
-
-
+        Partie laPartie = new Partie("SOLO", laGrille, leJoueur);
+        
+        //System.out.println(laPartie.getGrille().toString());
+        //System.out.println(grilleObjectif.toString());
+       
+        //Condition de fin de partie 
+        while(!laPartie.getGrille().equals(grilleObjectif)){
+            /*
+            
+            Tout le traitement du jeu 
+            
+            */
+        }
+        if (laPartie.getGrille().equals(grilleObjectif)){
+            System.out.println("Vous avez gagner la partie ! ");
+        }
+        
     }
 
     /**
