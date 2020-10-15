@@ -16,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import joueur.Joueur;
 import partie.Partie;
+import partie.TypePartie;
+import static partie.TypePartie.SOLO;
 
 /**
  *
@@ -54,6 +56,7 @@ public class JeuSoloConsole extends Application {
         Grille laGrille;
         //La grille objectif
         Grille grilleObjectif;
+        
         
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 ");
@@ -123,7 +126,7 @@ public class JeuSoloConsole extends Application {
         laGrille.melangeGrille(tailleGrille * 10);
 
         //Création de la partie 
-        Partie laPartie = new Partie("SOLO", laGrille, leJoueur);
+        Partie laPartie = new Partie(SOLO, laGrille, leJoueur);
         
         //System.out.println(laPartie.getGrille().toString());
         //System.out.println(grilleObjectif.toString());
