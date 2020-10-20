@@ -127,6 +127,7 @@ public class Grille {
 
     /**
      * Permet de permuter deux cases aléatoirement dans un tableau
+     * pas de paramètre
      */
     public void permuteCaseAlea(){
          Case temp = new Case();
@@ -149,6 +150,7 @@ public class Grille {
     
     /**
      * Permet de permuter deux cases dans un tableau 
+     * on passe en parametre les deux cases à permuter
      */
     public void permuteCase(Case c1 , Case c2){
         try{
@@ -183,8 +185,8 @@ public class Grille {
     
     
     /**
-     * Mouvement possible
-     * Permet de verifier le mouvement de la case est possible (si la case ne tape pas dans le vide
+     * Permet de bouger une case 
+     * on passe en paramètre une direction 
      * 
      */
     public void bougeCase(Direction direction){
@@ -195,6 +197,8 @@ public class Grille {
         
         //Test sur le type de mouvement 
         switch (direction){
+            
+            //La case à gauche du vide vas vers la droite 
             case DROITE :
                 if (caseVide.y-1>=0) {
                     permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y-1]);
@@ -204,6 +208,7 @@ public class Grille {
                 }
                 break;
                 
+                //la case à droite du vide vas vers la gauche 
             case GAUCHE :
                  if (caseVide.y+1<=this.taille-1) {
                     permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y+1]);
@@ -213,6 +218,7 @@ public class Grille {
                 }
                 break;
                 
+                //La case en bas du vide doit monter
             case HAUT :
                   if (caseVide.x+1 <= taille -1) {
                     permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x+1][caseVide.y]);
@@ -222,6 +228,7 @@ public class Grille {
                 }
                 break;
                 
+                //La case en haut du vide doit descendre 
             case BAS  :
                  if (caseVide.x-1>=0) {
                     permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x-1][caseVide.y]);
@@ -230,6 +237,8 @@ public class Grille {
                    throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le bas.."); 
                 }
                 break;
+                
+                // si le deplacement est pas définit
             case NONE :  
                 throw new IllegalArgumentException("Erreur"); 
         } 
@@ -242,8 +251,10 @@ public class Grille {
      */
     public Case laCaseVide(){
         Case laCase = new Case();
+        //on explore le tableau 
         for (int i = 0; i < this.grilleCase.length; i++) {
             for (int j = 0; j <this.grilleCase.length; j++) {
+                //Si c'est la case vide 
                 if (this.grilleCase[i][j].getValue()== (this.taille*this.taille)-1){
                     laCase =  this.grilleCase[i][j];
                 }
