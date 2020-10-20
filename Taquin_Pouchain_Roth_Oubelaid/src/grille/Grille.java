@@ -5,6 +5,8 @@
  */
 package grille;
 
+import partie.Direction;
+
 /**
  *
  * @author Perso
@@ -54,6 +56,9 @@ public class Grille {
     public Case[][] getGrille(){
         return grilleCase;
     }
+
+  
+    
     
     /**
      * Permet de modifier l'image de la grille 
@@ -73,20 +78,24 @@ public class Grille {
      */
     @Override
     public String toString(){
-        String text ="[";
+        String text ="";
         for (int i = 0; i < this.grilleCase.length; i++) {
+            text +="[";
             for (int j = 0; j < this.grilleCase[i].length; j++) {
                 if (this.grilleCase[i][j].getValue()== (this.taille * this.taille)-1) {
                       text += " " + "--" + " |";
+                }
+                else if (this.grilleCase[i][j].getValue()<10) {
+                    text += "  " + this.grilleCase[i][j].getValue() + " |";
                 }
                 else{
                      text += " " + this.grilleCase[i][j].getValue() + " |";
                 }
                
             }
-            text += '\n';
+            text +="]" + '\n';
         }
-        text += "]";
+       
         return text; 
     }
     
@@ -142,15 +151,22 @@ public class Grille {
      * Permet de permuter deux cases dans un tableau 
      */
     public void permuteCase(Case c1 , Case c2){
-        Case temp = new Case();
-        
+        try{
+            Case temp = new Case(c1);
+            
                 //permuter les coordonnées
-                c1.permuteCoo(c2);
+                c1.permuteCoo(c2); 
                 
+               
                 //permutation 
-                temp = c1 ;
-                c1= c2; 
-                c2= temp ;    
+                temp = this.grilleCase[c1.x][c1.y] ;
+                this.grilleCase[c1.x][c1.y]= this.grilleCase[c2.x][c2.y]; 
+                this.grilleCase[c2.x][c2.y]= temp ; 
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        
     }
     
      /**
@@ -162,4 +178,78 @@ public class Grille {
             permuteCaseAlea();
         }
     }
+    
+   
+    
+    
+    /**
+     * Mouvement possible
+     * Permet de verifier le mouvement de la case est possible (si la case ne tape pas dans le vide
+     * 
+     */
+    public void bougeCase(Direction direction){
+        
+        Case caseVide = new Case (this.laCaseVide());
+        //System.out.println(caseVide.toString());
+       
+        
+        //Test sur le type de mouvement 
+        switch (direction){
+            case DROITE :
+                if (caseVide.y-1>=0) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y-1]);
+                }
+                else{
+                   throw new IllegalArgumentException("Il n'y a pas de case à déplacer vers la droite.."); 
+                }
+                break;
+                
+            case GAUCHE :
+                 if (caseVide.y+1<=this.taille-1) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y+1]);
+                }
+                else{
+                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers la gauche.."); 
+                }
+                break;
+                
+            case HAUT :
+                  if (caseVide.x+1 <= taille -1) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x+1][caseVide.y]);
+                }
+                else{
+                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le haut.."); 
+                }
+                break;
+                
+            case BAS  :
+                 if (caseVide.x-1>=0) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x-1][caseVide.y]);
+                }
+                else{
+                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le bas.."); 
+                }
+                break;
+            case NONE :  
+                throw new IllegalArgumentException("Erreur"); 
+        } 
+        
+    }
+ 
+    /**
+     * laCaseVide
+     * revois la case vide du tableau 
+     */
+    public Case laCaseVide(){
+        Case laCase = new Case();
+        for (int i = 0; i < this.grilleCase.length; i++) {
+            for (int j = 0; j <this.grilleCase.length; j++) {
+                if (this.grilleCase[i][j].getValue()== (this.taille*this.taille)-1){
+                    laCase =  this.grilleCase[i][j];
+                }
+            }
+        }
+        return laCase;
+    }
+    
 }

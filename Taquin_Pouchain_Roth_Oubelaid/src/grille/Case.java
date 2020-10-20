@@ -36,6 +36,17 @@ public class Case {
     }
     
     /**
+     * Constructeur qui passe en paramètre une case 
+     * @param c 
+     */
+    public Case(Case c) {
+        this.valeur = c.valeur; 
+        this.x = c.x; 
+        this.y = c.y; 
+    }
+    
+    
+    /**
      * permet de récupérer la valeur de la case 
      * @return 
      */
