@@ -15,7 +15,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import joueur.Joueur;
+import partie.Direction;
+import static partie.Direction.BAS;
+import static partie.Direction.DROITE;
+import static partie.Direction.GAUCHE;
+import static partie.Direction.HAUT;
+import static partie.Direction.NONE;
 import partie.Partie;
+import partie.TypePartie;
+import static partie.TypePartie.SOLO;
 
 /**
  *
@@ -54,6 +62,8 @@ public class JeuSoloConsole extends Application {
         Grille laGrille;
         //La grille objectif
         Grille grilleObjectif;
+        //direction que doit effectuer la case  
+        String laDirection;
         
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 ");
@@ -123,23 +133,59 @@ public class JeuSoloConsole extends Application {
         laGrille.melangeGrille(tailleGrille * 10);
 
         //Création de la partie 
-        Partie laPartie = new Partie("SOLO", laGrille, leJoueur);
+        Partie laPartie = new Partie(SOLO, laGrille, leJoueur);
         
         //System.out.println(laPartie.getGrille().toString());
         //System.out.println(grilleObjectif.toString());
        
         //Condition de fin de partie 
         while(!laPartie.getGrille().equals(grilleObjectif)){
-            /*
+            //Afficher le plateau a chaque tours 
+            System.out.println(laPartie.getGrille().toString());
             
-            Tout le traitement du jeu 
-            
-            */
+            //proposer au joueur de déplacer la case 
+            System.out.println("Ou voulez vous déplacer la case vide ? 'q' pour la gauche, 'z' pour haut, 'd' pour droite et 's' pour bas  \n");
+            sc = new Scanner(System.in);
+
+            //récupération du choix du joueur
+            laDirection = sc.nextLine().toString();
+            laDirection.toLowerCase();
+            Direction direction =NONE;
+         
+            //vérification du format de la saisi pour la changer en direction 
+            try {
+                if (!(laDirection.equals("d") || laDirection.equals("droite")
+                    || laDirection.equals("q") || laDirection.equals("gauche")
+                    || laDirection.equals("z") || laDirection.equals("haut")
+                    || laDirection.equals("s") || laDirection.equals("bas"))) {
+                System.out.println("Vous devez écrire d pour Droite, q pour Gauche, z pour Haut ou s pour Bas");
+            } else {
+                
+                if (laDirection.equals("d") || laDirection.equals("droite")) {
+                    direction = DROITE;
+                } else if (laDirection.equals("q") || laDirection.equals("gauche")) {
+                    direction = GAUCHE;
+                } else if (laDirection.equals("z") || laDirection.equals("haut")) {
+                    direction = HAUT;
+                } else if (laDirection.equals("s") || laDirection.equals("bas")) {
+                    direction = BAS;
+                }
+                
+                try{
+                    laPartie.getGrille().bougeCase(direction);
+                }
+                catch(Exception e){
+                    System.out.println("Probleme : " + e.getMessage());
+                }
+                }
+               
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
-        if (laPartie.getGrille().equals(grilleObjectif)){
+        if (laPartie.getGrille().equals(grilleObjectif)) {
             System.out.println("Vous avez gagner la partie ! ");
         }
-        
 
     }
 
@@ -149,5 +195,5 @@ public class JeuSoloConsole extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
