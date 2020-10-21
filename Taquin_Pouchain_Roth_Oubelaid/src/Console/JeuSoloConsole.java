@@ -161,7 +161,7 @@ public class JeuSoloConsole extends Application {
             System.out.println(laPartie.getGrille().toString());
 
             //proposer au joueur de déplacer la case 
-            System.out.println("Ou voulez vous déplacer la case vide ? 'q' pour la gauche, 'z' pour haut, 'd' pour droite et 's' pour bas  \n");
+            System.out.println("Quel case voulez vou déplacer ? 'q' pour la gauche, 'z' pour haut, 'd' pour droite et 's' pour bas  \n");
             sc = new Scanner(System.in);
 
             //récupération du choix du joueur
