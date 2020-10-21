@@ -63,10 +63,10 @@ public class JeuSoloConsole extends Application {
         //La grille objectif
         Grille grilleObjectif;
         //direction que doit effectuer la case  
-        String laDirection;
+        String laDirection = "";
 
         //Ouverture du programme (Du jeu)
-        System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 ");
+        System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ");
 
         //on veut éviter que le pseudo soit null ou sans caractère
         while (!estValide) {
@@ -76,6 +76,18 @@ public class JeuSoloConsole extends Application {
 
             //récupération du choix du joueur
             lePseudo = sc.nextLine().toString();
+
+            //si la personne veut quitter la partie
+            if (lePseudo.equalsIgnoreCase("end")) {
+                System.out.println("Vous aller quitter le jeu ");
+                /*
+                    Sauvegarde des donnees en local 
+                    Sauvegarde si possible des données à distances 
+                    fermer le jeu
+                 */
+                //Fermer le jeu
+                System.exit(1);
+            }
 
             try {
                 // test Instanciation du joueur
@@ -103,6 +115,18 @@ public class JeuSoloConsole extends Application {
 
             //récupération du choix du joueur 
             String reponse = sc.nextLine();
+
+            //si la personne veut quitter la partie
+            if (reponse.equalsIgnoreCase("end")) {
+                System.out.println("Vous aller quitter le jeu ");
+                /*
+                    Sauvegarde des donnees en local 
+                    Sauvegarde si possible des données à distances 
+                    fermer le jeu
+                 */
+                //Fermer le jeu
+                System.exit(1);
+            }
 
             //controle de saisie 
             try {
@@ -151,7 +175,19 @@ public class JeuSoloConsole extends Application {
                     || laDirection.equals("q") || laDirection.equals("gauche")
                     || laDirection.equals("z") || laDirection.equals("haut")
                     || laDirection.equals("s") || laDirection.equals("bas"))) {
-                System.out.println("Vous devez écrire d pour Droite, q pour Gauche, z pour Haut ou s pour Bas");
+                if (laDirection.equalsIgnoreCase("end")) {
+                    System.out.println("Vous aller quitter le jeu ");
+                    /*
+                    Sauvegarde des donnees en local 
+                    Sauvegarde si possible des données à distances 
+                    
+                     */
+                    //Fermer le jeu
+                    System.exit(1);
+                } else {
+                    System.out.println("Vous devez écrire d pour Droite, q pour Gauche, z pour Haut ou s pour Bas");
+                }
+
             } else {
                 //on attribut la direction a la variable de direction 
                 if (laDirection.equals("d") || laDirection.equals("droite")) {
@@ -176,6 +212,36 @@ public class JeuSoloConsole extends Application {
         //on vérifie que la partie est bien terminé 
         if (laPartie.getGrille().equals(grilleObjectif)) {
             System.out.println("Vous avez gagner la partie ! ");
+            System.out.println("La partie vas être sauvegarder dans le classement, entrez 'end' pour quitter le jeu, entrez 'home' pour revenir a l'acceuil ");
+            sc = new Scanner(System.in);
+
+            /*
+                    Sauvegarde des donnees en local 
+                    Sauvegarde si possible des données à distances 
+                    
+             */
+            //récupération du choix du joueur
+            String reponse = sc.nextLine().toString();
+
+            if (!(reponse.equals("end") || reponse.equals("home"))) {
+                System.out.println("entrez 'end' pour quitter le jeu, entrez 'home' pour revenir a l'acceuil");
+            } else {
+                if (reponse.equalsIgnoreCase("end")) {
+                    System.out.println("Vous aller quitter le jeu ");
+
+                    //Fermer le jeu
+                    System.exit(1);
+                } else if (reponse.equalsIgnoreCase("home")) {
+                    System.out.println("Vous aller retourner à l'acceuil");
+                    /*
+                         retour à l'acceuil 
+                         
+                     */
+
+                }
+
+            }
+
         }
 
     }
