@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * @author Perso
  */
 public class ConnexionBDD {
-     private String host, port, dbname, username, password;
+    private String host, port, dbname, username, password;
     private Connection con = null;
-
+     
     public ConnexionBDD(String h, String po, String dbn, String u, String p) {
         this.host = h;
         this.port = po;

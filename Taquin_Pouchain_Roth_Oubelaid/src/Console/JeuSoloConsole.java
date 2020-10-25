@@ -5,7 +5,15 @@
  */
 package Console;
 
+import bdd.ConnexionBDD;
 import grille.Grille;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -64,7 +72,17 @@ public class JeuSoloConsole extends Application {
         Grille grilleObjectif;
         //direction que doit effectuer la case  
         String laDirection = "";
-
+        //variables pour la base de données 
+        Connection con = null;
+        ResultSet rs;
+        String serverName = "mysql-projettaquin.alwaysdata.net";//ou en local : "localhost";
+        String port =  "3306";
+        String mydatabase = "projettaquin_bdd";
+        String connectUrl = "jdbc:mysql://" + serverName+ ":"+ port + "/" + mydatabase; // a JDBC url
+        String username = "214750";//utilisateur à créer dans la base
+        String password = "AdminT@quin2020";//mot de passe de l'utilisateur
+        String query;
+      
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ou 'quitter' ");
 
@@ -142,7 +160,7 @@ public class JeuSoloConsole extends Application {
 
                 //validation du format 
                 estValide = true;
-            } //si le ligne saisie par l'utilisateur n'est pas un entier ou si l'entier est inférieur à 1  
+            } //si le ligne saisie par l'utilisateur n'est pas un entier ou si l'entier est inférieur à 2
             catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -150,7 +168,7 @@ public class JeuSoloConsole extends Application {
         //création de la grille 
         laGrille = new Grille(tailleGrille);
         grilleObjectif = new Grille(tailleGrille);
-        laGrille.melangeGrille(tailleGrille * 10);
+        laGrille.melangeGrille(tailleGrille * tailleGrille);
 
         //Création de la partie 
         Partie laPartie = new Partie(SOLO, laGrille, leJoueur);
@@ -217,9 +235,22 @@ public class JeuSoloConsole extends Application {
 
             /*
                     Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
                     
              */
+            /*
+            // récupération de la date du jour 
+            //Date aujourdhui = ;
+            DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date aujourdhui = new Date();
+            //System.out.println(format.format(date));
+
+            //connexion à la base de données
+            ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
+            //Nouvelle partie 
+            query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, SOLO, '" + lePseudo + "', " + aujourdhui + ", 10, " + aujourdhui + ")";
+            c.insertTuples(query);
+            */
+
             //récupération du choix du joueur
             String reponse = sc.nextLine().toString();
 

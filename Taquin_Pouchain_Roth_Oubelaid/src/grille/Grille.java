@@ -129,56 +129,97 @@ public class Grille {
      * Permet de permuter deux cases aléatoirement dans un tableau
      * pas de paramètre
      */
-    public void permuteCaseAlea(){
-         Case temp = new Case();
-         
-         //avoir des coordonnées aléatoires
-                int random1 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
-                int random2 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
-                int random3 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
-                int random4 = 0 + (int)(Math.random() * ((this.grilleCase.length - 1) + 1));
-                
-                //permuter les coordonnées
-                this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random3][random4]);
-                
-                //permutation 
-                temp = this.grilleCase[random1][random2] ;
-                this.grilleCase[random1][random2]= this.grilleCase[random3][random4]; 
-                this.grilleCase[random3][random4]= temp ;      
-    }
-    
-    
-    /**
-     * Permet de permuter deux cases dans un tableau 
-     * on passe en parametre les deux cases à permuter
-     */
-    public void permuteCase(Case c1 , Case c2){
-        try{
-            Case temp = new Case(c1);
-            
-                //permuter les coordonnées
-                c1.permuteCoo(c2); 
-                
-               
-                //permutation 
-                temp = this.grilleCase[c1.x][c1.y] ;
-                this.grilleCase[c1.x][c1.y]= this.grilleCase[c2.x][c2.y]; 
-                this.grilleCase[c2.x][c2.y]= temp ; 
+    public void permuteCaseAdjacent() {
+        Case temp = new Case();
+
+        //avoir des coordonnées aléatoires
+        int random1 = 0 + (int) (Math.random() * ((this.grilleCase.length - 2) + 1));
+        int random2 = 0 + (int) (Math.random() * ((this.grilleCase.length - 2) + 1));
+        
+        //1 pile ou face pour savoir si la permutation ce fait horizontalement ou verticalement 
+        int random3 = 0 + (int) (Math.random() * ((1 - 1) + 1));
+        
+        //permutation verticale
+        if(random3 ==0){
+              try {
+            //permuter les coordonnées
+            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 + 1][random2]);
+
+            //permutation 
+            temp = this.grilleCase[random1][random2];
+            this.grilleCase[random1][random2] = this.grilleCase[random1 + 1][random2];
+            this.grilleCase[random1 + 1][random2] = temp;
+        } catch (Exception e) {
+            //permuter les coordonnées
+            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 - 1][random2]);
+
+            //permutation 
+            temp = this.grilleCase[random1][random2];
+            this.grilleCase[random1][random2] = this.grilleCase[random1 - 1][random2];
+            this.grilleCase[random1 - 1][random2] = temp;
         }
-        catch(Exception e) {
+ 
+        }
+        //permutation horizontale 
+        else{
+              try {
+            //permuter les coordonnées
+            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2+1]);
+
+            //permutation 
+            temp = this.grilleCase[random1][random2];
+            this.grilleCase[random1][random2] = this.grilleCase[random1][random2+1];
+            this.grilleCase[random1][random2+1] = temp;
+        } catch (Exception e) {
+            //permuter les coordonnées
+            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2-1]);
+
+            //permutation 
+            temp = this.grilleCase[random1][random2];
+            this.grilleCase[random1][random2] = this.grilleCase[random1][random2-1];
+            this.grilleCase[random1][random2-1] = temp;
+        }
+        }
+     
+    }
+
+    /**
+     * Permet de permuter deux cases dans un tableau on passe en parametre les
+     * deux cases à permuter
+     */
+    public void permuteCase(Case c1, Case c2) {
+        try {
+            Case temp = new Case(c1);
+
+            //permuter les coordonnées
+            c1.permuteCoo(c2);
+
+            //permutation 
+            temp = this.grilleCase[c1.x][c1.y];
+            this.grilleCase[c1.x][c1.y] = this.grilleCase[c2.x][c2.y];
+            this.grilleCase[c2.x][c2.y] = temp;
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }
-    
-     /**
-     * melanger la grille 
-     * on passe un int qui definit le nombre de permutation que l'on souhaite effectuer 
+
+    /**
+     * melanger la grille on passe un int qui definit le nombre de permutation
+     * que l'on souhaite effectuer
      */
     public void melangeGrille(int nbpermut){
-        for (int i = 0; i < nbpermut; i++) {
-            permuteCaseAlea();
+        if (nbpermut % 2  == 0) {
+            for (int i = 0; i < nbpermut; i++) {
+            permuteCaseAdjacent();
+            }
         }
+        else  {
+            for (int i = 1; i < nbpermut; i++) {
+            permuteCaseAdjacent();
+            }
+        }
+        
     }
     
    
