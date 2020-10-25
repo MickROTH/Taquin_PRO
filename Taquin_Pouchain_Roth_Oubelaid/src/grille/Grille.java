@@ -27,7 +27,7 @@ public class Grille {
      public Grille(int uneTaille){
 
         
-             if (uneTaille > 1) {
+             if (uneTaille > 2) {
                this.grilleCase =  new Case[uneTaille][uneTaille];
 
         int compteur =0; 
@@ -42,7 +42,7 @@ public class Grille {
         this.taille =  uneTaille; 
          }
          else{
-            throw new IllegalArgumentException("La grille ne peut pas être de taille inférieur ou égale à 1.");
+            throw new IllegalArgumentException("La grille ne peut pas être de taille inférieur ou égale à 2.");
          }
          
          

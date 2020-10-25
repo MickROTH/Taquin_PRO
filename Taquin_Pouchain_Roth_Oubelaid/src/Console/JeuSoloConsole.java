@@ -66,19 +66,19 @@ public class JeuSoloConsole extends Application {
         String laDirection = "";
 
         //Ouverture du programme (Du jeu)
-        System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ");
+        System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ou 'quitter' ");
 
         //on veut éviter que le pseudo soit null ou sans caractère
         while (!estValide) {
             //création du joueur 
-            System.out.println("Veuillez saisir votre pseudo \n");
+            System.out.println("Veuillez saisir votre pseudo ");
             sc = new Scanner(System.in);
 
             //récupération du choix du joueur
             lePseudo = sc.nextLine().toString();
 
             //si la personne veut quitter la partie
-            if (lePseudo.equalsIgnoreCase("end")) {
+            if (lePseudo.equalsIgnoreCase("end") ||lePseudo.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
                 /*
                     Sauvegarde des donnees en local 
@@ -110,14 +110,14 @@ public class JeuSoloConsole extends Application {
         while (!estValide) {
 
             //Faire saisir une taille de grille
-            System.out.println("Quel taille de plateau souhaitez vous ? ");
+            System.out.println("Quel taille de plateau souhaitez vous ? Pour quitter le jeu écrivez 'end' ou 'quitter' ");
             sc = new Scanner(System.in);
 
             //récupération du choix du joueur 
             String reponse = sc.nextLine();
 
             //si la personne veut quitter la partie
-            if (reponse.equalsIgnoreCase("end")) {
+            if (reponse.equalsIgnoreCase("end") ||reponse.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
                 /*
                     Sauvegarde des donnees en local 
@@ -161,7 +161,7 @@ public class JeuSoloConsole extends Application {
             System.out.println(laPartie.getGrille().toString());
 
             //proposer au joueur de déplacer la case 
-            System.out.println("Quel case voulez vou déplacer ? 'q' pour la gauche, 'z' pour haut, 'd' pour droite et 's' pour bas  \n");
+            System.out.println("Quel case voulez vous déplacer ? 'q' pour la gauche, 'z' pour haut, 'd' pour droite et 's' pour bas. \n Pour quitter le jeu écrivez 'end' ou 'quitter' ");
             sc = new Scanner(System.in);
 
             //récupération du choix du joueur
@@ -175,7 +175,7 @@ public class JeuSoloConsole extends Application {
                     || laDirection.equals("q") || laDirection.equals("gauche")
                     || laDirection.equals("z") || laDirection.equals("haut")
                     || laDirection.equals("s") || laDirection.equals("bas"))) {
-                if (laDirection.equalsIgnoreCase("end")) {
+                if (laDirection.equalsIgnoreCase("end")|| laDirection.equalsIgnoreCase("quitter")) {
                     System.out.println("Vous aller quitter le jeu ");
                     /*
                     Sauvegarde des donnees en local 
@@ -223,15 +223,15 @@ public class JeuSoloConsole extends Application {
             //récupération du choix du joueur
             String reponse = sc.nextLine().toString();
 
-            if (!(reponse.equals("end") || reponse.equals("home"))) {
-                System.out.println("entrez 'end' pour quitter le jeu, entrez 'home' pour revenir a l'acceuil");
+            if (!(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home")|| reponse.equals("accueil"))) {
+                System.out.println("entrez 'end' pour quitter le jeu, entrez 'home' ou 'acceuil' pour revenir a l'acceuil");
             } else {
-                if (reponse.equalsIgnoreCase("end")) {
+                if (reponse.equalsIgnoreCase("end") || reponse.equalsIgnoreCase("quitter")) {
                     System.out.println("Vous aller quitter le jeu ");
 
                     //Fermer le jeu
                     System.exit(1);
-                } else if (reponse.equalsIgnoreCase("home")) {
+                } else if (reponse.equalsIgnoreCase("home")|| reponse.equalsIgnoreCase("accueil")) {
                     System.out.println("Vous aller retourner à l'acceuil");
                     /*
                          retour à l'acceuil 
