@@ -5,11 +5,13 @@
  */
 package grille;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Perso
  */
-public class Case {
+public class Case implements Serializable {
     //Attributs de la classe 
     private int valeur; 
     int x;

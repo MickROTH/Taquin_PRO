@@ -6,6 +6,7 @@
 package Console;
 
 import bdd.ConnexionBDD;
+import bdd.SerialisationPartie;
 import grille.Grille;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -77,20 +78,18 @@ public class JeuSoloConsole extends Application {
         Connection con = null;
         ResultSet rs;
         String serverName = "mysql-projettaquin.alwaysdata.net";//ou en local : "localhost";
-        String port =  "3306";
+        String port = "3306";
         String mydatabase = "projettaquin_bdd";
-        String connectUrl = "jdbc:mysql://" + serverName+ ":"+ port + "/" + mydatabase; // a JDBC url
+        String connectUrl = "jdbc:mysql://" + serverName + ":" + port + "/" + mydatabase; // a JDBC url
         String username = "214750";//utilisateur à créer dans la base
         String password = "AdminT@quin2020";//mot de passe de l'utilisateur
         String query;
         //compteur de deplacement 
-        int nbDeplacement =0 ; 
+        int nbDeplacement = 0;
         //chronometre 
         Chrono chrono = new Chrono();
         chrono.start(); // démarrage du chrono
-        
 
-           
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ou 'quitter' ");
 
@@ -102,15 +101,10 @@ public class JeuSoloConsole extends Application {
 
             //récupération du choix du joueur
             lePseudo = sc.nextLine().toString();
-           
+
             //si la personne veut quitter la partie
-            if (lePseudo.equalsIgnoreCase("end") ||lePseudo.equalsIgnoreCase("quitter")) {
+            if (lePseudo.equalsIgnoreCase("end") || lePseudo.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
-                /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
-                    fermer le jeu
-                 */
                 //Fermer le jeu
                 System.exit(1);
             }
@@ -143,13 +137,8 @@ public class JeuSoloConsole extends Application {
             String reponse = sc.nextLine();
 
             //si la personne veut quitter la partie
-            if (reponse.equalsIgnoreCase("end") ||reponse.equalsIgnoreCase("quitter")) {
+            if (reponse.equalsIgnoreCase("end") || reponse.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
-                /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
-                    fermer le jeu
-                 */
                 //Fermer le jeu
                 System.exit(1);
             }
@@ -201,13 +190,14 @@ public class JeuSoloConsole extends Application {
                     || laDirection.equals("q") || laDirection.equals("gauche")
                     || laDirection.equals("z") || laDirection.equals("haut")
                     || laDirection.equals("s") || laDirection.equals("bas"))) {
-                if (laDirection.equalsIgnoreCase("end")|| laDirection.equalsIgnoreCase("quitter")) {
+                if (laDirection.equalsIgnoreCase("end") || laDirection.equalsIgnoreCase("quitter")) {
                     System.out.println("Vous aller quitter le jeu ");
-                    /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
-                    
-                     */
+
+                    //sérialisation de la partie 
+                    SerialisationPartie partie = new SerialisationPartie();
+                    partie.serialise(laPartie);
+
+                    //partie.deserialise();
                     //Fermer le jeu
                     System.exit(1);
                 } else {
@@ -232,10 +222,9 @@ public class JeuSoloConsole extends Application {
                 } catch (Exception e) {
                     //afiicher l'erreur dans le cas échéant
                     System.out.println("Probleme : " + e.getMessage());
-                }
-                finally{
+                } finally {
                     // on comptabilise le deplacement même si la personne a tenter au faux mouvement 
-                    nbDeplacement ++ ;
+                    nbDeplacement++;
                 }
             }
         }
@@ -245,37 +234,30 @@ public class JeuSoloConsole extends Application {
             System.out.println("La partie vas être sauvegarder dans le classement, entrez 'end' pour quitter le jeu, entrez 'home' pour revenir a l'acceuil ");
             sc = new Scanner(System.in);
 
-            /*
-                    Sauvegarde des donnees en local 
-                    
-             */
-            
             // récupération de la date du jour 
             //Date aujourdhui = ;
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date aujourdhui = new Date();
-            
+
             //on arrete le chrono
             chrono.stop();
             //System.out.println(chrono.getDureeTxt());
-            try{
-                  //connexion à la base de données
-            ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
-            //Nouvelle partie 
-            //INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('patate' , null, 'SOLO', 'patate', "00:20:30", 10, "20/10/2020")
-            query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, 'SOLO', '" + lePseudo + "', '" + chrono.getDureeTxt() + "', "+nbDeplacement+", '" + aujourdhui + "')";
-            //System.out.println(query);
-            c.insertTuples(query);
+            try {
+                //connexion à la base de données
+                ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
+                //Nouvelle partie 
+                //INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('patate' , null, 'SOLO', 'patate', "00:20:30", 10, "20/10/2020")
+                query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, 'SOLO', '" + lePseudo + "', '" + chrono.getDureeTxt() + "', " + nbDeplacement + ", '" + aujourdhui + "')";
+                //System.out.println(query);
+                c.insertTuples(query);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-          catch(Exception e){
-              System.out.println(e.getMessage());
-          }
-            
 
             //récupération du choix du joueur
             String reponse = sc.nextLine().toString();
 
-            if (!(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home")|| reponse.equals("accueil"))) {
+            if (!(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home") || reponse.equals("accueil"))) {
                 System.out.println("entrez 'end' pour quitter le jeu, entrez 'home' ou 'acceuil' pour revenir a l'acceuil");
             } else {
                 if (reponse.equalsIgnoreCase("end") || reponse.equalsIgnoreCase("quitter")) {
@@ -283,7 +265,7 @@ public class JeuSoloConsole extends Application {
 
                     //Fermer le jeu
                     System.exit(1);
-                } else if (reponse.equalsIgnoreCase("home")|| reponse.equalsIgnoreCase("accueil")) {
+                } else if (reponse.equalsIgnoreCase("home") || reponse.equalsIgnoreCase("accueil")) {
                     System.out.println("Vous aller retourner à l'acceuil");
                     /*
                          retour à l'acceuil 
