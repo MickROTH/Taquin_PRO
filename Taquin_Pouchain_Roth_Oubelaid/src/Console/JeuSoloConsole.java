@@ -32,6 +32,7 @@ import static partie.Direction.NONE;
 import partie.Partie;
 import partie.TypePartie;
 import static partie.TypePartie.SOLO;
+import utilities.Chrono;
 
 /**
  *
@@ -82,7 +83,14 @@ public class JeuSoloConsole extends Application {
         String username = "214750";//utilisateur à créer dans la base
         String password = "AdminT@quin2020";//mot de passe de l'utilisateur
         String query;
-      
+        //compteur de deplacement 
+        int nbDeplacement =0 ; 
+        //chronometre 
+        Chrono chrono = new Chrono();
+        chrono.start(); // démarrage du chrono
+        
+
+           
         //Ouverture du programme (Du jeu)
         System.out.println("Bienvenu dans Taquin ! Un jeu de puzzle 🎮 pour quitter le jeu écrivez 'end' ou 'quitter' ");
 
@@ -94,7 +102,7 @@ public class JeuSoloConsole extends Application {
 
             //récupération du choix du joueur
             lePseudo = sc.nextLine().toString();
-
+           
             //si la personne veut quitter la partie
             if (lePseudo.equalsIgnoreCase("end") ||lePseudo.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
@@ -225,6 +233,10 @@ public class JeuSoloConsole extends Application {
                     //afiicher l'erreur dans le cas échéant
                     System.out.println("Probleme : " + e.getMessage());
                 }
+                finally{
+                    // on comptabilise le deplacement même si la personne a tenter au faux mouvement 
+                    nbDeplacement ++ ;
+                }
             }
         }
         //on vérifie que la partie est bien terminé 
@@ -237,19 +249,28 @@ public class JeuSoloConsole extends Application {
                     Sauvegarde des donnees en local 
                     
              */
-            /*
+            
             // récupération de la date du jour 
             //Date aujourdhui = ;
             DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date aujourdhui = new Date();
-            //System.out.println(format.format(date));
-
-            //connexion à la base de données
+            
+            //on arrete le chrono
+            chrono.stop();
+            //System.out.println(chrono.getDureeTxt());
+            try{
+                  //connexion à la base de données
             ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
             //Nouvelle partie 
-            query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, SOLO, '" + lePseudo + "', " + aujourdhui + ", 10, " + aujourdhui + ")";
+            //INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('patate' , null, 'SOLO', 'patate', "00:20:30", 10, "20/10/2020")
+            query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, 'SOLO', '" + lePseudo + "', '" + chrono.getDureeTxt() + "', "+nbDeplacement+", '" + aujourdhui + "')";
+            //System.out.println(query);
             c.insertTuples(query);
-            */
+            }
+          catch(Exception e){
+              System.out.println(e.getMessage());
+          }
+            
 
             //récupération du choix du joueur
             String reponse = sc.nextLine().toString();

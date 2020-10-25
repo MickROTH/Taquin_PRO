@@ -42,11 +42,11 @@ public class ConnexionBDD {
             con = DriverManager.getConnection(connectUrl, username, password);
             //System.out.println("Database connection established.");
         } catch (ClassNotFoundException cnfe) {
-            System.out.println("Cannot load db driver: com.mysql.jdbc.Driver");
-            cnfe.printStackTrace();
+             throw new IllegalArgumentException("Cannot load db driver: com.mysql.jdbc.Driver");
+           
         } catch (Exception e) {
-            System.out.println("Erreur inattendue");
-            e.printStackTrace();
+             throw new IllegalArgumentException("Erreur inattendue");
+            
         }
     }
 
@@ -90,7 +90,7 @@ public class ConnexionBDD {
             }
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Probleme avec la requete");
+             throw new IllegalArgumentException("Probleme avec la requete");
         } finally {
             this.closeConnexion();
         }
@@ -109,8 +109,8 @@ public class ConnexionBDD {
             //System.out.println(n+" tuples inseres");
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Probleme avec la requete d'insertion");
-            System.out.println("Tuple deja existant");
+            throw new IllegalArgumentException("Probleme avec la requete d'insertion");
+            //System.out.println("Tuple deja existant");
         } finally {
             this.closeConnexion();
         }
@@ -128,7 +128,7 @@ public class ConnexionBDD {
             //System.out.println(n+" tuples inseres");
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Probleme avec la requete de modification");
+            throw new IllegalArgumentException("Probleme avec la requete de modification");
         } finally {
             this.closeConnexion();
         }
