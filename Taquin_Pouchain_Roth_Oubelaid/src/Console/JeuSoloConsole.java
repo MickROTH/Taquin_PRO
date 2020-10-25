@@ -6,6 +6,7 @@
 package Console;
 
 import bdd.ConnexionBDD;
+import bdd.SerialisationPartie;
 import grille.Grille;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -106,11 +107,6 @@ public class JeuSoloConsole extends Application {
             //si la personne veut quitter la partie
             if (lePseudo.equalsIgnoreCase("end") ||lePseudo.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
-                /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
-                    fermer le jeu
-                 */
                 //Fermer le jeu
                 System.exit(1);
             }
@@ -145,11 +141,6 @@ public class JeuSoloConsole extends Application {
             //si la personne veut quitter la partie
             if (reponse.equalsIgnoreCase("end") ||reponse.equalsIgnoreCase("quitter")) {
                 System.out.println("Vous aller quitter le jeu ");
-                /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
-                    fermer le jeu
-                 */
                 //Fermer le jeu
                 System.exit(1);
             }
@@ -203,11 +194,10 @@ public class JeuSoloConsole extends Application {
                     || laDirection.equals("s") || laDirection.equals("bas"))) {
                 if (laDirection.equalsIgnoreCase("end")|| laDirection.equalsIgnoreCase("quitter")) {
                     System.out.println("Vous aller quitter le jeu ");
-                    /*
-                    Sauvegarde des donnees en local 
-                    Sauvegarde si possible des données à distances 
                     
-                     */
+                    //sérialisation de la partie 
+                    SerialisationPartie partie = new SerialisationPartie();
+                    partie.serialise(laPartie);
                     //Fermer le jeu
                     System.exit(1);
                 } else {

@@ -5,11 +5,13 @@
  */
 package joueur;
 
+import java.io.Serializable;
+
 /**
  * Représente un joueur, avec son pseudo en guise d'identifiant.
  * @author Mick
  */
-public class Joueur {
+public class Joueur implements Serializable{
     /**
      * @attribute Pseudo du joueur
      */

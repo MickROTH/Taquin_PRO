@@ -1,6 +1,7 @@
 package partie;
 
 import grille.Grille;
+import java.io.Serializable;
 import joueur.Joueur;
 import partie.TypePartie;
 
@@ -10,7 +11,7 @@ import partie.TypePartie;
  * @see Grille
  * @author Mick
  */
-public class Partie {
+public class Partie implements Serializable {
     /**
      * @attribute Type de partie (par exemple : SOLO, COOP, VERSUS)
      */
@@ -33,7 +34,7 @@ public class Partie {
      * @param grille La grille de taquin
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus.
      */
-    private Partie(TypePartie type, Grille grille){
+    private Partie(final TypePartie type, final Grille grille){
         if(!typePartieEstConnu(type)){
             throw new IllegalArgumentException("Ce type de partie n'est pas connu : " + type);
         }
@@ -48,7 +49,7 @@ public class Partie {
      * @param joueurs Le ou les joueur(s) de cette partie
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(TypePartie type, Grille grille, Joueur[] joueurs){
+    public Partie(final TypePartie type, final Grille grille,final Joueur[] joueurs){
         this(type, grille);
         this.setJoueurs(joueurs);
     }
@@ -61,7 +62,7 @@ public class Partie {
      * @param j2 Joueur 2
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(TypePartie type, Grille grille, Joueur j1, Joueur j2){
+    public Partie(final TypePartie type,final  Grille grille,final Joueur j1,final  Joueur j2){
         this(type, grille);
         joueurs = new Joueur[2];
         joueurs[0] = j1;
@@ -77,7 +78,7 @@ public class Partie {
      * @param j2 Joueur 2
      * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
      */
-    public Partie(TypePartie type, Grille grille, Joueur j1){
+    public Partie(final TypePartie type,final Grille grille,final Joueur j1){
         this(type, grille);
         joueurs = new Joueur[1];
         joueurs[0] = j1;

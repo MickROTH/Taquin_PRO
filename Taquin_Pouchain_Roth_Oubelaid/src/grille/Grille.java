@@ -5,13 +5,14 @@
  */
 package grille;
 
+import java.io.Serializable;
 import partie.Direction;
 
 /**
  *
  * @author Perso
  */
-public class Grille {
+public class Grille implements Serializable {
     //Attributs de la classe
     private Case[][] grilleCase ;
     private String image ;
