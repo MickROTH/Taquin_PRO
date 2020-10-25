@@ -198,6 +198,9 @@ public class JeuSoloConsole extends Application {
                     //sérialisation de la partie 
                     SerialisationPartie partie = new SerialisationPartie();
                     partie.serialise(laPartie);
+                    
+                    //partie.deserialise();
+                    
                     //Fermer le jeu
                     System.exit(1);
                 } else {

@@ -5,8 +5,10 @@
  */
 package bdd;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import partie.Partie;
 
@@ -16,7 +18,7 @@ import partie.Partie;
  */
 public class SerialisationPartie {
 
-    public  void serialise( Partie laPartie) {
+    public void serialise(Partie laPartie) {
         //finalPartie partie = new Partie("Dupond", "Jean", 175);
         ObjectOutputStream oos = null;
         try {
@@ -37,4 +39,30 @@ public class SerialisationPartie {
             }
         }
     }
+
+    public void deserialise() {
+        Partie unePartie;
+        ObjectOutputStream oos = null;
+        ObjectInputStream ois = null;
+        try {
+            final FileInputStream fichierIn = new FileInputStream("personne.ser");
+            ois = new ObjectInputStream(fichierIn);
+            unePartie = (Partie) ois.readObject();
+            System.out.println("Personne : ");
+            System.out.println("nom : " + unePartie.getType());
+        } catch (final java.io.IOException e) {
+            e.printStackTrace();
+        } catch (final ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (final IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
 }
