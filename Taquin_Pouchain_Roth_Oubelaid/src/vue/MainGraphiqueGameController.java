@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Perso
  */
-public class MainGraphiqueAccueilController implements Initializable {
+public class MainGraphiqueGameController implements Initializable {
 
     /**
      * Initializes the controller class.
