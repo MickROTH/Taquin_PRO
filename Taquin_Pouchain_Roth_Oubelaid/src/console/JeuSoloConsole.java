@@ -44,15 +44,13 @@ public class JeuSoloConsole extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-       
-
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
         System.out.println(" .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .-----------------.  \n"
                 + "| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |  \n"
                 + "| |  _________   | || |      __      | || |    ___       | || | _____  _____ | || |     _____    | || | ____  _____  | |  \n"
@@ -265,9 +263,11 @@ public class JeuSoloConsole extends Application {
             //récupération du choix du joueur
             String reponse = sc.nextLine().toString();
 
-            if (!(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home") || reponse.equals("accueil"))) {
+            while (!(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home") || reponse.equals("accueil"))) {
                 System.out.println("entrez 'end' pour quitter le jeu, entrez 'home' ou 'acceuil' pour revenir a l'acceuil");
-            } else {
+                //récupération du choix du joueur
+                reponse = sc.nextLine().toString();
+            } if(reponse.equals("end") || reponse.equals("quitter") || reponse.equals("home") || reponse.equals("accueil"))  {
                 if (reponse.equalsIgnoreCase("end") || reponse.equalsIgnoreCase("quitter")) {
                     System.out.println("Vous aller quitter le jeu ");
 
@@ -286,7 +286,7 @@ public class JeuSoloConsole extends Application {
 
         }
         launch(args);
-        
+
     }
 
 }
