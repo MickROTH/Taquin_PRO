@@ -29,6 +29,8 @@ public class FXMain extends Application {
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Accueil jeu Taquin");
         stage.show();
 
     }
