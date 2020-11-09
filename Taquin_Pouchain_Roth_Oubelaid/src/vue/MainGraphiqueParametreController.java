@@ -118,6 +118,7 @@ public class MainGraphiqueParametreController implements Initializable {
 
     }
     
+    //rendre qu'une seul checkBox coché 
     @FXML
      private void comboImage1Check(ActionEvent event) throws IOException {
          ComboImage2.setSelected(false);

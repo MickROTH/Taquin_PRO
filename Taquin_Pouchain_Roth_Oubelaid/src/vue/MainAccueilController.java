@@ -38,7 +38,7 @@ public class MainAccueilController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-    
+
     @FXML
     ImageView imageFond;
 
@@ -54,7 +54,7 @@ public class MainAccueilController implements Initializable {
 
         paramStage.setScene(scene);
         paramStage.show();
-        
+
         /*
         OU 
         
@@ -64,9 +64,9 @@ public class MainAccueilController implements Initializable {
         stageTheLabelBelongs.setScene(scene);
         stageTheLabelBelongs.show();
         
-*/
+         */
 
-/* 
+ /* 
 CHANGER UNE IMAGE 
   System.out.println("je suis un bouton ");
         Image image = new Image("https://external-preview.redd.it/GOkP8onbuyjGmN9Rc8Que5mw21CdSw6OuXpAKUuE6-4.jpg?auto=webp&s=2bc0e522d1f2fa887333286d557466b2be00fa5e");
@@ -83,23 +83,18 @@ CHANGER UNE IMAGE
             System.out.println(e.getMessage());
         }
 
-*/
-     
+         */
     }
 
     @FXML
     private void buttSansSoloOnClick(ActionEvent event) throws IOException {
         System.out.println("Oh on a cliquer sur moi !");
-        
+
         // il faut cacher la fenetre d'accueil 
-        
-        
-        
         JeuSoloConsole jeu = new JeuSoloConsole();
         String[] arg = new String[10];
         JeuSoloConsole.main(arg);
 
-        
     }
 
 }
