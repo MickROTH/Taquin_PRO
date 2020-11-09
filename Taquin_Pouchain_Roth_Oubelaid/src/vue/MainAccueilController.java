@@ -50,10 +50,10 @@ public class MainAccueilController implements Initializable {
 
         Scene scene = new Scene(root);
 
-        Stage gameStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage paramStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        gameStage.setScene(scene);
-        gameStage.show();
+        paramStage.setScene(scene);
+        paramStage.show();
         
         /*
         OU 

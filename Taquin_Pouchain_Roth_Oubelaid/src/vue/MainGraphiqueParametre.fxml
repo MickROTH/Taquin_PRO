@@ -60,12 +60,12 @@
             <Image url="@../images/image4.jpg" />
          </image>
       </ImageView>
-      <RadioButton fx:id="ComboImage1" layoutX="61.0" layoutY="230.0" mnemonicParsing="false" selected="true" />
-      <RadioButton fx:id="ComboImage2" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ComboImage3" layoutX="195.0" layoutY="230.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ComboImage4" layoutX="62.0" layoutY="294.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ComboImage5" layoutX="130.0" layoutY="294.0" mnemonicParsing="false" />
-      <RadioButton fx:id="ComboImage6" layoutX="195.0" layoutY="294.0" mnemonicParsing="false" />
+      <RadioButton fx:id="ComboImage1" layoutX="61.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage1Check" selected="true" />
+      <RadioButton fx:id="ComboImage2" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage2Check" />
+      <RadioButton fx:id="ComboImage3" layoutX="195.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage3Check" />
+      <RadioButton fx:id="ComboImage4" layoutX="62.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage4Check" />
+      <RadioButton fx:id="ComboImage5" layoutX="130.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage5Check" />
+      <RadioButton fx:id="ComboImage6" layoutX="195.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage6Check" />
       <Text fill="WHITE" layoutX="25.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pseudo : " />
       <TextField fx:id="txtPseudo" layoutX="81.0" layoutY="111.0" prefHeight="25.0" prefWidth="105.0" promptText="Pseudo" />
    </children>
