@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico')
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap') 
+
+.borderpane{
+    -fx-background-color: #284243;
+    -fx-font-family: "Varela Round"; 
+    -fx-text-fill: white;
+}
+.menuBar{
+    -fx-background-color:#284243;
+    -fx-text-fill:white;
+}
+.label{
+    -fx-text-fill:white;
+}
+#titleLabel{
+    -fx-text-fill: white;
+    -fx-font: bold 30px "Pacifico"
+}
+.button{
+    -fx-text-fill: #284243;
+    -fx-background-color: white;
+}
+
+
+
