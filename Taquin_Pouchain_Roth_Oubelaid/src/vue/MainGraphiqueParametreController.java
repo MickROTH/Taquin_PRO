@@ -5,9 +5,15 @@
  */
 package vue;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -24,4 +30,18 @@ public class MainGraphiqueParametreController implements Initializable {
         // TODO
     }    
     
+    @FXML
+    RadioButton ComboImage1,ComboImage2,ComboImage3,ComboImage4,ComboImage5,ComboImage6;
+    
+    @FXML
+    ChoiceBox ChoiceTheme;
+    
+    @FXML
+    TextField txtPseudo, txtTaille;
+    
+    
+      @FXML
+    private void bttValidezOnClick(ActionEvent event) throws IOException {
+
+    }
 }
