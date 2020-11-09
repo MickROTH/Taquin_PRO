@@ -46,7 +46,7 @@ public class MainAccueilController implements Initializable {
     private void buttAvecSoloOnClick(ActionEvent event) throws IOException {
 
         //Ouvrir un autre fenetre graphisue 
-        Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueGame.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueParametre.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -84,11 +84,7 @@ CHANGER UNE IMAGE
         }
 
 */
-      
-        
- 
-        System.out.println("tu m'as cliquer dessus ");
-
+     
     }
 
     @FXML
