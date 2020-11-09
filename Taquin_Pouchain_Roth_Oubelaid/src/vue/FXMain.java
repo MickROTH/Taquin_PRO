@@ -30,7 +30,7 @@ public class FXMain extends Application {
 
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setTitle("Accueil jeu Taquin");
+        stage.setTitle("Jeu Taquin");
         stage.show();
 
     }
