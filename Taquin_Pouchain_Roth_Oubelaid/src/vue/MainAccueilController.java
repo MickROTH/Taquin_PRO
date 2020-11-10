@@ -55,35 +55,6 @@ public class MainAccueilController implements Initializable {
         paramStage.setScene(scene);
         paramStage.show();
 
-        /*
-        OU 
-        
-        Stage stageTheLabelBelongs = (Stage) label.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/logine.fxml"));
-        Scene scene = new Scene(root);
-        stageTheLabelBelongs.setScene(scene);
-        stageTheLabelBelongs.show();
-        
-         */
-
- /* 
-CHANGER UNE IMAGE 
-  System.out.println("je suis un bouton ");
-        Image image = new Image("https://external-preview.redd.it/GOkP8onbuyjGmN9Rc8Que5mw21CdSw6OuXpAKUuE6-4.jpg?auto=webp&s=2bc0e522d1f2fa887333286d557466b2be00fa5e");
-         Class<?> clazz = this.getClass();
-        try{
-            
-        InputStream input = clazz.getResourceAsStream("/images/jetest.jpg");
- 
-        Image image1 = new Image(input);
- 
-        imageFond.setImage(image1);
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-
-         */
     }
 
     @FXML
@@ -96,5 +67,21 @@ CHANGER UNE IMAGE
         JeuSoloConsole.main(arg);
 
     }
+@FXML
+    private void buttClassementOnClick(ActionEvent event) throws IOException {
 
+       //Ouvrir un autre fenetre graphisue 
+        Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueClassement.fxml"));
+
+        Scene scene = new Scene(root);
+
+        Stage paramStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        paramStage.setScene(scene);
+        paramStage.show();
+
+    }
+   
+    
+    
 }
