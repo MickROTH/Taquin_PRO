@@ -67,8 +67,18 @@ public class MainGraphiqueClassementController implements Initializable {
           String joueur1 = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String joueur2 = element.substring(0, element.indexOf( ';'));
+          element = element.substring(element.indexOf(';')+1);
+          String typePartie = element.substring(0, element.indexOf( ';'));
+          element = element.substring(element.indexOf(';')+1);
+          String gagnant = element.substring(0, element.indexOf( ';'));
+          element = element.substring(element.indexOf(';')+1);
+          String temps = element.substring(0, element.indexOf( ';'));
+          element = element.substring(element.indexOf(';')+1);
+          String score = element.substring(0, element.indexOf( ';'));
           
-          System.out.println(index + " \n le joueur : "+ joueur1 + " \n le joueur : "+ joueur2 + "\n le reste : " +  element );
+          
+          
+          System.out.println(index + " \n le joueur : "+ joueur1 + " \n le joueur : "+ joueur2  + " \n le type de partie : "+ typePartie  + " \n le gagnant : "+ gagnant +" \n le temps : "+ temps +" \n le score : "+ score + "\n le reste : " +  element );
          //tabClassement.getItems().addAll(joueur1);
        	 //System.out.println (elem + '\n');
        }
