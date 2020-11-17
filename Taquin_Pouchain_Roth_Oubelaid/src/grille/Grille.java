@@ -48,7 +48,12 @@ public class Grille implements Serializable {
          
          
     }
+
+    public int getTaille() {
+        return taille;
+    }
     
+     
     
     /**
      * Permet de récuperer la grille 
@@ -297,7 +302,7 @@ public class Grille implements Serializable {
         for (int i = 0; i < this.grilleCase.length; i++) {
             for (int j = 0; j <this.grilleCase.length; j++) {
                 //Si c'est la case vide 
-                if (this.grilleCase[i][j].getValue()== (this.taille*this.taille)-1){
+                if (this.grilleCase[i][j].getValue()== (this.taille*this.taille)){
                     laCase =  this.grilleCase[i][j];
                 }
             }

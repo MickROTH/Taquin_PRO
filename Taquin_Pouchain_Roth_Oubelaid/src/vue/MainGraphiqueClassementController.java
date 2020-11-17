@@ -6,6 +6,7 @@
 package vue;
 
 import bdd.ConnexionBDD;
+import grille.Grille;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,6 +25,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import joueur.Joueur;
+import static partie.TypePartie.SOLO;
 
 /**
  * FXML Controller class
@@ -75,8 +78,20 @@ public class MainGraphiqueClassementController implements Initializable {
           String temps = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String score = element.substring(0, element.indexOf( ';'));
+          element = element.substring(element.indexOf(';')+1);
+          String tailleGrille = element.substring(0, element.indexOf( ';'));
           
+          //création d'un joueur 
+          Joueur j1 =  new Joueur(joueur1);
           
+          //création de la grille
+          Grille g  =  new Grille (Integer.parseInt(tailleGrille));
+          if (joueur2 == "null"){
+              
+                  
+              
+              //Partie p =  new Partie (SOLO, )
+          }
           
           System.out.println(index + " \n le joueur : "+ joueur1 + " \n le joueur : "+ joueur2  + " \n le type de partie : "+ typePartie  + " \n le gagnant : "+ gagnant +" \n le temps : "+ temps +" \n le score : "+ score + "\n le reste : " +  element );
          //tabClassement.getItems().addAll(joueur1);
