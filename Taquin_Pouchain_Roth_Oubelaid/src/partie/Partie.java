@@ -27,6 +27,12 @@ public class Partie implements Serializable {
      * Il peut y avoir un ou deux joueurs dans une partie.
      */
     private Joueur[] joueurs;
+    
+    private Joueur gagnant ; 
+    
+    private String temps; 
+    
+    private int score; 
 
     /**
      * Constructeur privé : Crée une partie de taquin mais sans préciser le(s) joueur(s).
@@ -83,6 +89,25 @@ public class Partie implements Serializable {
         joueurs = new Joueur[1];
         joueurs[0] = j1;
         this.setJoueurs(joueurs);
+    }
+    /**
+     * Constructeur : Crée une partie de taquin notamment pour l'affichage du classement.
+     * @param type Type de partie (SOLO, COOP ou VERSUS)
+     * @param grille La grille de taquin
+     * @param j1 Joueur 1
+     * @param j2 Joueur 2
+     * @throws IllegalArgumentException Si le type ne fait pas partie des types connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une partie SOLO).
+     */
+    public Partie(final TypePartie type,final Grille grille,final Joueur j1, final Joueur j2, final Joueur gagnant, final String time, final int score){
+        this(type, grille);
+        joueurs = new Joueur[2];
+        joueurs[0] = j1;
+        joueurs[1] = j2;
+        this.setJoueurs(joueurs);
+        this.type = type;
+        this.gagnant= gagnant;
+        this.score= score; 
+        this.temps = time;
     }
         
     /**

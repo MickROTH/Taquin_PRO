@@ -6,9 +6,13 @@
 package vue;
 
 import Console.JeuSoloConsole;
+import bdd.ConnexionBDD;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +40,9 @@ public class MainAccueilController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }
+       
+    }  
+    
 
     @FXML
     ImageView imageFond;

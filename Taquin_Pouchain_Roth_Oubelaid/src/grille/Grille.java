@@ -31,7 +31,7 @@ public class Grille implements Serializable {
              if (uneTaille > 2) {
                this.grilleCase =  new Case[uneTaille][uneTaille];
 
-        int compteur =0; 
+        int compteur =1; 
         //valuer les case de 0 à  taille*taille-1
          for (int i = 0; i < this.grilleCase.length; i++) {
             for (int j = 0; j < this.grilleCase[i].length; j++) {
@@ -83,7 +83,7 @@ public class Grille implements Serializable {
         for (int i = 0; i < this.grilleCase.length; i++) {
             text +="[";
             for (int j = 0; j < this.grilleCase[i].length; j++) {
-                if (this.grilleCase[i][j].getValue()== (this.taille * this.taille)-1) {
+                if (this.grilleCase[i][j].getValue()== (this.taille * this.taille)) {
                       text += " " + "--" + " |";
                 }
                 else if (this.grilleCase[i][j].getValue()<10) {
