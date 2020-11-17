@@ -22,12 +22,12 @@
       <Button fx:id="buttRetour" layoutX="542.0" layoutY="416.0" mnemonicParsing="false" onAction="#ButtRetourOnClick" text="Retour " />
       <TableView fx:id="tabClassement" layoutX="35.0" layoutY="64.0" prefHeight="329.0" prefWidth="586.0">
         <columns>
-          <TableColumn fx:id="joueur1" prefWidth="75.0" text="Joueur 1" />
-          <TableColumn fx:id="joueur2" prefWidth="75.0" text="Joueur 2" />
-            <TableColumn fx:id="tailleGrille_TypePartie" prefWidth="139.99998474121094" text="TailleGrille/ TypePartie" />
-            <TableColumn fx:id="Temps" prefWidth="80.00006103515625" text="Temps" />
-            <TableColumn fx:id="nbDeplacement" minWidth="0.0" prefWidth="137.33334350585938" text="Nombre déplacement " />
-            <TableColumn fx:id="vainqueur" prefWidth="85.3333740234375" text="Vainqueur" />
+          <TableColumn fx:id="joueur1" editable="false" prefWidth="75.0" text="Joueur 1" />
+          <TableColumn fx:id="joueur2" editable="false" prefWidth="75.0" text="Joueur 2" />
+            <TableColumn fx:id="tailleGrille_TypePartie" editable="false" prefWidth="139.99998474121094" text="TailleGrille/ TypePartie" />
+            <TableColumn fx:id="temps" editable="false" prefWidth="80.00006103515625" text="Temps" />
+            <TableColumn fx:id="nbDeplacement" editable="false" minWidth="0.0" prefWidth="137.33334350585938" text="Nombre déplacement " />
+            <TableColumn fx:id="vainqueur" editable="false" prefWidth="85.3333740234375" text="Vainqueur" />
         </columns>
       </TableView>
       <Text fill="#f9f8f8" layoutX="247.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classement ">

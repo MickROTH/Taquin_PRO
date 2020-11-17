@@ -24,8 +24,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import joueur.Joueur;
+import partie.Partie;
+import partie.SavePartie;
 import static partie.TypePartie.SOLO;
 
 /**
@@ -58,45 +61,54 @@ public class MainGraphiqueClassementController implements Initializable {
         
         ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
 
-        ArrayList<String> list = c.getTuples("SELECT * FROM Partie order by time" );
-        
+        ArrayList<String> list = c.getTuples("SELECT * FROM Partie order by time desc" );
+        ArrayList<SavePartie> uneliste = new ArrayList() ;
 
+        
+       
+      joueur1.setCellValueFactory(new PropertyValueFactory<>("j1"));
+      joueur2.setCellValueFactory(new PropertyValueFactory<>("j2"));
+      tailleGrille_TypePartie.setCellValueFactory(new PropertyValueFactory<>("typePartie_tailleGrille"));
+      temps.setCellValueFactory(new PropertyValueFactory<>("time"));
+      nbDeplacement.setCellValueFactory(new PropertyValueFactory<>("score"));
+      vainqueur.setCellValueFactory(new PropertyValueFactory<>("gagnant"));
+       
+      
          // Affichage à l'aide d'une boucle forEach
        for(String elem: list)
        {
           String element = elem;
           String index = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
-          String joueur1 = element.substring(0, element.indexOf( ';'));
+          String joueure1 = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
-          String joueur2 = element.substring(0, element.indexOf( ';'));
+          String joueure2 = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String typePartie = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String gagnant = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
-          String temps = element.substring(0, element.indexOf( ';'));
+          String tempss = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String score = element.substring(0, element.indexOf( ';'));
           element = element.substring(element.indexOf(';')+1);
           String tailleGrille = element.substring(0, element.indexOf( ';'));
           
-          //création d'un joueur 
-          Joueur j1 =  new Joueur(joueur1);
+         
+
+      
+               //création d'une sauvegarde
+             SavePartie sauvegarde =  new SavePartie( joueure1,joueure2,  (typePartie + '\n'+tailleGrille+"X"+tailleGrille),  gagnant,  tempss,  score);
           
-          //création de la grille
-          Grille g  =  new Grille (Integer.parseInt(tailleGrille));
-          if (joueur2 == "null"){
-              
-                  
-              
-              //Partie p =  new Partie (SOLO, )
-          }
+              uneliste.add(sauvegarde);
+
           
-          System.out.println(index + " \n le joueur : "+ joueur1 + " \n le joueur : "+ joueur2  + " \n le type de partie : "+ typePartie  + " \n le gagnant : "+ gagnant +" \n le temps : "+ temps +" \n le score : "+ score + "\n le reste : " +  element );
-         //tabClassement.getItems().addAll(joueur1);
-       	 //System.out.println (elem + '\n');
+          System.out.println(index + " \n le joueur : "+ joueure1 + " \n le joueur : "+ joueur2  + " \n le type de partie : "+ typePartie  + " \n le gagnant : "+ gagnant +" \n le temps : "+ temps +" \n le score : "+ score + "\n le reste : " +  element );
+        
        }
+      
+      ObservableList<SavePartie> laListe = FXCollections.observableArrayList(uneliste);
+        tabClassement.setItems(laListe);
     }    
     
     
