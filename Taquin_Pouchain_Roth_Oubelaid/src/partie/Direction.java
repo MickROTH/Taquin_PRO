@@ -11,7 +11,7 @@ package partie;
  */
 public enum Direction {
     //Attributs de la classe. 
-    /** 
+    /**
      * La case peut prendre 4 directions
      */
     HAUT,

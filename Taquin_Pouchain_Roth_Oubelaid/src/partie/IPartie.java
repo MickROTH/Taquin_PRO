@@ -13,12 +13,20 @@ import joueur.Joueur;
  * @author micka
  */
 public interface IPartie {
+
     public String getType();
+
     public Grille getGrille();
+
     public Joueur[] getJoueurs();
+
     public void mettreEnPause();
+
     public void reprendre();
+
     public void prochainTour();
+
     public void estFinie();
+
     public boolean typePartieEstConnu(TypePartie typeTest);
 }

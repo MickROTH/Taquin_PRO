@@ -11,62 +11,62 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="418.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MainGraphiqueParametreController">
-   <children>
-      <ImageView fitHeight="431.0" fitWidth="304.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/parametre.jpg" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="13.0" layoutY="93.0" prefHeight="323.0" prefWidth="241.0" style="-fx-background-color: #000000; -fx-opacity: 0.55;" />
-      <Text fill="WHITE" layoutX="25.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Taille de la grille : " />
-      <Button fx:id="bttValidez" layoutX="107.0" layoutY="374.0" mnemonicParsing="false" onAction="#bttValidezOnClick" text="Valider" />
-      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="42.0" prefWidth="241.0" style="-fx-background-color: #000000; -fx-opacity: 0.55;" />
-      <Text fill="#f9f7f7" layoutX="55.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètre de partie">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtTaille" layoutX="126.0" layoutY="141.0" prefHeight="25.0" prefWidth="53.0" text="3" />
-      <Text fill="WHITE" layoutX="23.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir une image : " />
-      <Text fill="WHITE" layoutX="26.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir le thème de l'interface : " />
-      <ChoiceBox fx:id="ChoiceTheme" layoutX="59.0" layoutY="338.0" prefWidth="150.0" />
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="48.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image1.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="116.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image2.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="181.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image3.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="181.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image6.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="116.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image5.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="48.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/image4.jpg" />
-         </image>
-      </ImageView>
-      <RadioButton fx:id="ComboImage1" layoutX="61.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage1Check" selected="true" />
-      <RadioButton fx:id="ComboImage2" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage2Check" />
-      <RadioButton fx:id="ComboImage3" layoutX="195.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage3Check" />
-      <RadioButton fx:id="ComboImage4" layoutX="62.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage4Check" />
-      <RadioButton fx:id="ComboImage5" layoutX="130.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage5Check" />
-      <RadioButton fx:id="ComboImage6" layoutX="195.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage6Check" />
-      <Text fill="WHITE" layoutX="25.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pseudo : " />
-      <TextField fx:id="txtPseudo" layoutX="81.0" layoutY="111.0" prefHeight="25.0" prefWidth="105.0" promptText="Pseudo" />
-   </children>
+    <children>
+        <ImageView fitHeight="431.0" fitWidth="304.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/parametre.jpg" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutX="13.0" layoutY="93.0" prefHeight="323.0" prefWidth="241.0" style="-fx-background-color: #000000; -fx-opacity: 0.55;" />
+        <Text fill="WHITE" layoutX="25.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Taille de la grille : " />
+        <Button fx:id="bttValidez" layoutX="107.0" layoutY="374.0" mnemonicParsing="false" onAction="#bttValidezOnClick" text="Valider" />
+        <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="42.0" prefWidth="241.0" style="-fx-background-color: #000000; -fx-opacity: 0.55;" />
+        <Text fill="#f9f7f7" layoutX="55.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètre de partie">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TextField fx:id="txtTaille" layoutX="126.0" layoutY="141.0" prefHeight="25.0" prefWidth="53.0" text="3" />
+        <Text fill="WHITE" layoutX="23.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir une image : " />
+        <Text fill="WHITE" layoutX="26.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir le thème de l'interface : " />
+        <ChoiceBox fx:id="ChoiceTheme" layoutX="59.0" layoutY="338.0" prefWidth="150.0" />
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="48.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image1.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="116.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image2.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="181.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image3.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="181.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image6.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="116.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image5.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="42.0" fitWidth="43.0" layoutX="48.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/image4.jpg" />
+            </image>
+        </ImageView>
+        <RadioButton fx:id="ComboImage1" layoutX="61.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage1Check" selected="true" />
+        <RadioButton fx:id="ComboImage2" layoutX="130.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage2Check" />
+        <RadioButton fx:id="ComboImage3" layoutX="195.0" layoutY="230.0" mnemonicParsing="false" onAction="#comboImage3Check" />
+        <RadioButton fx:id="ComboImage4" layoutX="62.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage4Check" />
+        <RadioButton fx:id="ComboImage5" layoutX="130.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage5Check" />
+        <RadioButton fx:id="ComboImage6" layoutX="195.0" layoutY="294.0" mnemonicParsing="false" onAction="#comboImage6Check" />
+        <Text fill="WHITE" layoutX="25.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pseudo : " />
+        <TextField fx:id="txtPseudo" layoutX="81.0" layoutY="111.0" prefHeight="25.0" prefWidth="105.0" promptText="Pseudo" />
+    </children>
 </AnchorPane>

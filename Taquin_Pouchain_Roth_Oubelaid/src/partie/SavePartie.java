@@ -10,13 +10,28 @@ package partie;
  * @author Perso
  */
 public class SavePartie {
-    private String j1 ; 
-    private String j2 ; 
-    private String typePartie_tailleGrille; 
-    private String gagnant ; 
-    private String time ; 
-    private String score ; 
 
+    /**
+     * Les paramètres de la Classe
+     */
+    private String j1;
+    private String j2;
+    private String typePartie_tailleGrille;
+    private String gagnant;
+    private String time;
+    private String score;
+
+    /**
+     * Le constructeur de la classe sauvegarde des données de partie si la
+     * partie est solo alors j2 -> null
+     *
+     * @param j1
+     * @param j2
+     * @param typePartie_tailleGrille
+     * @param gagnant
+     * @param time
+     * @param score
+     */
     public SavePartie(String j1, String j2, String typePartie_tailleGrille, String gagnant, String time, String score) {
         this.j1 = j1;
         this.j2 = j2;
@@ -26,32 +41,58 @@ public class SavePartie {
         this.score = score;
     }
 
+    /**
+     * Getteur du joueur 1
+     *
+     * @return String
+     */
     public String getJ1() {
         return j1;
     }
 
+    /**
+     * Getteur du joueur 2
+     *
+     * @return String
+     */
     public String getJ2() {
         return j2;
     }
 
+    /**
+     * Getteur de la taille de la grille et du type de partie
+     *
+     * @return String
+     */
     public String getTypePartie_tailleGrille() {
         return typePartie_tailleGrille;
     }
 
+    /**
+     * Getteur du gagnant
+     *
+     * @return String
+     */
     public String getGagnant() {
         return gagnant;
     }
 
+    /**
+     * Getteur du temps de partie
+     *
+     * @return String
+     */
     public String getTime() {
         return time;
     }
 
+    /**
+     * Getteur du score
+     *
+     * @return String
+     */
     public String getScore() {
         return score;
     }
-    
-    
-    
-    
-    
+
 }

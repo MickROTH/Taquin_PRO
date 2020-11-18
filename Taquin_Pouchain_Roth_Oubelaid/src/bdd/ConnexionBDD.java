@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package bdd;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,9 +18,22 @@ import java.util.ArrayList;
  * @author Perso
  */
 public class ConnexionBDD {
+
+    /**
+     * Attributs de la classe
+     */
     private String host, port, dbname, username, password;
     private Connection con = null;
-     
+
+    /**
+     * Constructeur de la classe ConnexionBDD
+     *
+     * @param h
+     * @param po
+     * @param dbn
+     * @param u
+     * @param p
+     */
     public ConnexionBDD(String h, String po, String dbn, String u, String p) {
         this.host = h;
         this.port = po;
@@ -42,11 +56,11 @@ public class ConnexionBDD {
             con = DriverManager.getConnection(connectUrl, username, password);
             //System.out.println("Database connection established.");
         } catch (ClassNotFoundException cnfe) {
-             throw new IllegalArgumentException("Cannot load db driver: com.mysql.jdbc.Driver");
-           
+            throw new IllegalArgumentException("Cannot load db driver: com.mysql.jdbc.Driver");
+
         } catch (Exception e) {
-             throw new IllegalArgumentException("Erreur inattendue");
-            
+            throw new IllegalArgumentException("Erreur inattendue");
+
         }
     }
 
@@ -58,7 +72,8 @@ public class ConnexionBDD {
             try {
                 con.close();
                 //System.out.println("Database connection terminated.");
-            } catch (Exception e) { /* ignore close errors */ }
+            } catch (Exception e) {
+                /* ignore close errors */ }
         }
     }
 
@@ -82,21 +97,21 @@ public class ConnexionBDD {
                 tuple = "";
                 for (int i = 1; i <= metadata.getColumnCount(); i++) {
                     tuple += rs.getString(i);
-                    if (i<metadata.getColumnCount()) {
-                        tuple +=";";
+                    if (i < metadata.getColumnCount()) {
+                        tuple += ";";
                     }
                 }
                 res.add(tuple);
             }
             stmt.close();
         } catch (SQLException e) {
-             throw new IllegalArgumentException("Probleme avec la requete");
+            throw new IllegalArgumentException("Probleme avec la requete");
         } finally {
             this.closeConnexion();
         }
         return res;
     }
-    
+
     /*
      * Insère un ou plusieurs tuples dans la base à partir de la requête passée en paramètre
      * Pour cela, il faut utiliser la méthode executeUpdate dans la classe Statement
@@ -115,8 +130,8 @@ public class ConnexionBDD {
             this.closeConnexion();
         }
     }
-    
-     /*
+
+    /*
      * Modifier un tuple dans la base à partir de la requête passée en paramètre
      * Pour cela, il faut utiliser la méthode executeUpdate dans la classe Statement
      */
@@ -133,5 +148,5 @@ public class ConnexionBDD {
             this.closeConnexion();
         }
     }
-    
+
 }

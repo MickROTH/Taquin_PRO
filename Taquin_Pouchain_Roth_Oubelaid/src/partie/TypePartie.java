@@ -2,6 +2,7 @@ package partie;
 
 /**
  * Représente les différents type de partie possibles
+ *
  * @author micka
  */
 public enum TypePartie {
