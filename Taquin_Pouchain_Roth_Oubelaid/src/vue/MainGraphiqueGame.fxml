@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="borderpane" stylesheets="@../css/taquin.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MainGraphiqueGameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="borderpane" stylesheets="@../vue/mainGraphiqueGame.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MainGraphiqueGameController">
    <top>
       <MenuBar styleClass="menuBar" BorderPane.alignment="CENTER">
         <menus>
@@ -32,7 +32,7 @@
       </MenuBar>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="372.0" prefWidth="190.0" styleClass="vbox" stylesheets="@../css/taquin.css">
+      <VBox alignment="TOP_CENTER" prefHeight="372.0" prefWidth="190.0" styleClass="vbox" stylesheets="@../vue/mainGraphiqueGame.css">
          <children>
             <Label id="titleLabel" alignment="CENTER" styleClass="borderpane" text="Taquin">
                <VBox.margin>

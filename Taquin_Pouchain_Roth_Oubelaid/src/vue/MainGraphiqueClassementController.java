@@ -115,7 +115,7 @@ public class MainGraphiqueClassementController implements Initializable {
     
      @FXML
     private void ButtRetourOnClick(ActionEvent event) throws IOException {
-     //Ouvrir un autre fenetre graphisue 
+     //Ouvrir un autre fenetre graphique 
         Parent root = FXMLLoader.load(getClass().getResource("MainAccueil.fxml"));
 
         Scene scene = new Scene(root);
