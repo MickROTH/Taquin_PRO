@@ -13,113 +13,105 @@ import partie.Direction;
  * @author Perso
  */
 public class Grille implements Serializable {
-    //Attributs de la classe
-    private Case[][] grilleCase ;
-    private String image ;
-    private int taille;
-
-   
-    
 
     /**
-     * constructeur de la classe 
-     * @param uneTaille la taille hauteur et largeur de la grille 
+     * Attributs de la classe
      */
-     public Grille(int uneTaille){
+    private Case[][] grilleCase;
+    private String image;
+    private int taille;
 
-        
-             if (uneTaille > 2) {
-               this.grilleCase =  new Case[uneTaille][uneTaille];
+    /**
+     * constructeur de la classe
+     *
+     * @param uneTaille la taille hauteur et largeur de la grille
+     */
+    public Grille(int uneTaille) {
 
-        int compteur =1; 
-        //valuer les case de 0 à  taille*taille-1
-         for (int i = 0; i < this.grilleCase.length; i++) {
-            for (int j = 0; j < this.grilleCase[i].length; j++) {
-                
-                this.grilleCase[i][j] = new Case(compteur, i, j);
-                compteur ++ ; 
+        if (uneTaille > 2) {
+            this.grilleCase = new Case[uneTaille][uneTaille];
+
+            int compteur = 1;
+            //valuer les case de 0 à  taille*taille-1
+            for (int i = 0; i < this.grilleCase.length; i++) {
+                for (int j = 0; j < this.grilleCase[i].length; j++) {
+
+                    this.grilleCase[i][j] = new Case(compteur, i, j);
+                    compteur++;
+                }
             }
-        }
-        this.taille =  uneTaille; 
-         }
-         else{
+            this.taille = uneTaille;
+        } else {
             throw new IllegalArgumentException("La grille ne peut pas être de taille inférieur ou égale à 2.");
-         }
-         
-         
+        }
+
     }
 
     public int getTaille() {
         return taille;
     }
-    
-     
-    
+
     /**
-     * Permet de récuperer la grille 
-     * @return 
+     * Permet de récuperer la grille
+     *
+     * @return Case[][]
      */
-    public Case[][] getGrille(){
+    public Case[][] getGrille() {
         return grilleCase;
     }
 
-  
-    
-    
     /**
-     * Permet de modifier l'image de la grille 
-     * @param chemin 
+     * Permet de modifier l'image de la grille
+     *
+     * @param chemin
      */
-    public void setImage(String chemin){
-        this.image = chemin; 
+    public void setImage(String chemin) {
+        this.image = chemin;
     }
-    
-    
+
     /**
-     * Affichage de la grille sous la forme 
-     * [ 0 | 1 | 2 |
-     *  3 | 4 | 5 |
-     *  6 | 7 | 8]
-     * @return 
+     * Affichage de la grille sous la forme [ 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8]
+     *
+     * @return String
      */
     @Override
-    public String toString(){
-        String text ="";
+    public String toString() {
+        String text = "";
         for (int i = 0; i < this.grilleCase.length; i++) {
-            text +="[";
+            text += "[";
             for (int j = 0; j < this.grilleCase[i].length; j++) {
-                if (this.grilleCase[i][j].getValue()== (this.taille * this.taille)) {
-                      text += " " + "--" + " |";
-                }
-                else if (this.grilleCase[i][j].getValue()<10) {
+                if (this.grilleCase[i][j].getValue() == (this.taille * this.taille)) {
+                    text += " " + "--" + " |";
+                } else if (this.grilleCase[i][j].getValue() < 10) {
                     text += "  " + this.grilleCase[i][j].getValue() + " |";
+                } else {
+                    text += " " + this.grilleCase[i][j].getValue() + " |";
                 }
-                else{
-                     text += " " + this.grilleCase[i][j].getValue() + " |";
-                }
-               
-            }
-            text +="]" + '\n';
-        }
-       
-        return text; 
-    }
-    
-    /**
-     * cette méthode servira principalement a comparer si la grille courante, à la grille objectif ( voir si la partie est fini)
-     * @param autreGrille
-     * @return 
-     */
 
+            }
+            text += "]" + '\n';
+        }
+
+        return text;
+    }
+
+    /**
+     * cette méthode servira principalement a comparer si la grille courante, à
+     * la grille objectif ( voir si la partie est fini)
+     *
+     * @param autreGrille
+     * @return boolean ui dis si oui (true) quand les deux élément sont pareils
+     * et false dans le cas inverse
+     */
     @Override
     public boolean equals(Object autreGrille) {
-        boolean bool ; 
+        boolean bool;
         if (autreGrille instanceof Grille) {
-            Grille autreGrille2 =(Grille) autreGrille ;
+            Grille autreGrille2 = (Grille) autreGrille;
             bool = true;
             for (int i = 0; i < this.grilleCase.length; i++) {
                 for (int j = 0; j < this.grilleCase[i].length; j++) {
-                    
+
                     if (this.grilleCase[i][j].getValue() != autreGrille2.getGrille()[i][j].getValue()) {
                         bool = false;
                     }
@@ -132,8 +124,8 @@ public class Grille implements Serializable {
     }
 
     /**
-     * Permet de permuter deux cases aléatoirement dans un tableau
-     * pas de paramètre
+     * Permet de permuter deux cases aléatoirement dans un tableau pas de
+     * paramètre
      */
     public void permuteCaseAdjacent() {
         Case temp = new Case();
@@ -141,52 +133,51 @@ public class Grille implements Serializable {
         //avoir des coordonnées aléatoires
         int random1 = 0 + (int) (Math.random() * ((this.grilleCase.length - 2) + 1));
         int random2 = 0 + (int) (Math.random() * ((this.grilleCase.length - 2) + 1));
-        
+
         //1 pile ou face pour savoir si la permutation ce fait horizontalement ou verticalement 
         int random3 = 0 + (int) (Math.random() * ((1 - 1) + 1));
-        
+
         //permutation verticale
-        if(random3 ==0){
-              try {
-            //permuter les coordonnées
-            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 + 1][random2]);
+        if (random3 == 0) {
+            try {
+                //permuter les coordonnées
+                this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 + 1][random2]);
 
-            //permutation 
-            temp = this.grilleCase[random1][random2];
-            this.grilleCase[random1][random2] = this.grilleCase[random1 + 1][random2];
-            this.grilleCase[random1 + 1][random2] = temp;
-        } catch (Exception e) {
-            //permuter les coordonnées
-            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 - 1][random2]);
+                //permutation 
+                temp = this.grilleCase[random1][random2];
+                this.grilleCase[random1][random2] = this.grilleCase[random1 + 1][random2];
+                this.grilleCase[random1 + 1][random2] = temp;
+            } catch (Exception e) {
+                //permuter les coordonnées
+                this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1 - 1][random2]);
 
-            //permutation 
-            temp = this.grilleCase[random1][random2];
-            this.grilleCase[random1][random2] = this.grilleCase[random1 - 1][random2];
-            this.grilleCase[random1 - 1][random2] = temp;
-        }
- 
-        }
-        //permutation horizontale 
-        else{
-              try {
-            //permuter les coordonnées
-            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2+1]);
+                //permutation 
+                temp = this.grilleCase[random1][random2];
+                this.grilleCase[random1][random2] = this.grilleCase[random1 - 1][random2];
+                this.grilleCase[random1 - 1][random2] = temp;
+            }
 
-            //permutation 
-            temp = this.grilleCase[random1][random2];
-            this.grilleCase[random1][random2] = this.grilleCase[random1][random2+1];
-            this.grilleCase[random1][random2+1] = temp;
-        } catch (Exception e) {
-            //permuter les coordonnées
-            this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2-1]);
+        } //permutation horizontale 
+        else {
+            try {
+                //permuter les coordonnées
+                this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2 + 1]);
 
-            //permutation 
-            temp = this.grilleCase[random1][random2];
-            this.grilleCase[random1][random2] = this.grilleCase[random1][random2-1];
-            this.grilleCase[random1][random2-1] = temp;
+                //permutation 
+                temp = this.grilleCase[random1][random2];
+                this.grilleCase[random1][random2] = this.grilleCase[random1][random2 + 1];
+                this.grilleCase[random1][random2 + 1] = temp;
+            } catch (Exception e) {
+                //permuter les coordonnées
+                this.grilleCase[random1][random2].permuteCoo(this.grilleCase[random1][random2 - 1]);
+
+                //permutation 
+                temp = this.grilleCase[random1][random2];
+                this.grilleCase[random1][random2] = this.grilleCase[random1][random2 - 1];
+                this.grilleCase[random1][random2 - 1] = temp;
+            }
         }
-        }
-     
+
     }
 
     /**
@@ -214,100 +205,89 @@ public class Grille implements Serializable {
      * melanger la grille on passe un int qui definit le nombre de permutation
      * que l'on souhaite effectuer
      */
-    public void melangeGrille(int nbpermut){
-        if (nbpermut % 2  == 0) {
+    public void melangeGrille(int nbpermut) {
+        if (nbpermut % 2 == 0) {
             for (int i = 0; i < nbpermut; i++) {
-            permuteCaseAdjacent();
+                permuteCaseAdjacent();
             }
-        }
-        else  {
+        } else {
             for (int i = 1; i < nbpermut; i++) {
-            permuteCaseAdjacent();
+                permuteCaseAdjacent();
             }
         }
-        
+
     }
-    
-   
-    
-    
+
     /**
-     * Permet de bouger une case 
-     * on passe en paramètre une direction 
-     * 
+     * Permet de bouger une case on passe en paramètre une direction
+     *
      */
-    public void bougeCase(Direction direction){
-        
-        Case caseVide = new Case (this.laCaseVide());
+    public void bougeCase(Direction direction) {
+
+        Case caseVide = new Case(this.laCaseVide());
         //System.out.println(caseVide.toString());
-       
-        
+
         //Test sur le type de mouvement 
-        switch (direction){
-            
+        switch (direction) {
+
             //La case à gauche du vide vas vers la droite 
-            case DROITE :
-                if (caseVide.y-1>=0) {
-                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y-1]);
-                }
-                else{
-                   throw new IllegalArgumentException("Il n'y a pas de case à déplacer vers la droite.."); 
-                }
-                break;
-                
-                //la case à droite du vide vas vers la gauche 
-            case GAUCHE :
-                 if (caseVide.y+1<=this.taille-1) {
-                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x][caseVide.y+1]);
-                }
-                else{
-                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers la gauche.."); 
+            case DROITE:
+                if (caseVide.y - 1 >= 0) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y], this.grilleCase[caseVide.x][caseVide.y - 1]);
+                } else {
+                    throw new IllegalArgumentException("Il n'y a pas de case à déplacer vers la droite..");
                 }
                 break;
-                
-                //La case en bas du vide doit monter
-            case HAUT :
-                  if (caseVide.x+1 <= taille -1) {
-                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x+1][caseVide.y]);
-                }
-                else{
-                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le haut.."); 
-                }
-                break;
-                
-                //La case en haut du vide doit descendre 
-            case BAS  :
-                 if (caseVide.x-1>=0) {
-                    permuteCase(this.grilleCase[caseVide.x][caseVide.y],this.grilleCase[caseVide.x-1][caseVide.y]);
-                }
-                else{
-                   throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le bas.."); 
+
+            //la case à droite du vide vas vers la gauche 
+            case GAUCHE:
+                if (caseVide.y + 1 <= this.taille - 1) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y], this.grilleCase[caseVide.x][caseVide.y + 1]);
+                } else {
+                    throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers la gauche..");
                 }
                 break;
-                
-                // si le deplacement est pas définit
-            case NONE :  
-                throw new IllegalArgumentException("Erreur"); 
-        } 
-        
+
+            //La case en bas du vide doit monter
+            case HAUT:
+                if (caseVide.x + 1 <= taille - 1) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y], this.grilleCase[caseVide.x + 1][caseVide.y]);
+                } else {
+                    throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le haut..");
+                }
+                break;
+
+            //La case en haut du vide doit descendre 
+            case BAS:
+                if (caseVide.x - 1 >= 0) {
+                    permuteCase(this.grilleCase[caseVide.x][caseVide.y], this.grilleCase[caseVide.x - 1][caseVide.y]);
+                } else {
+                    throw new IllegalArgumentException("Il n'y a pas de case a déplacer vers le bas..");
+                }
+                break;
+
+            // si le deplacement est pas définit
+            case NONE:
+                throw new IllegalArgumentException("Erreur");
+        }
+
     }
- 
+
     /**
-     * laCaseVide
-     * revois la case vide du tableau 
+     * laCaseVide revois la case vide du tableau
      */
-    public Case laCaseVide(){
+    public Case laCaseVide() {
         Case laCase = new Case();
         //on explore le tableau 
         for (int i = 0; i < this.grilleCase.length; i++) {
-            for (int j = 0; j <this.grilleCase.length; j++) {
+            for (int j = 0; j < this.grilleCase.length; j++) {
                 //Si c'est la case vide 
-                if (this.grilleCase[i][j].getValue()== (this.taille*this.taille)){
-                    laCase =  this.grilleCase[i][j];
+                if (this.grilleCase[i][j].getValue() == (this.taille * this.taille)) {
+                    laCase = this.grilleCase[i][j];
                 }
             }
         }
         return laCase;
     }
-    
+
 }

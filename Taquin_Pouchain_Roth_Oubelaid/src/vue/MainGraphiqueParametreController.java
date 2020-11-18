@@ -29,35 +29,47 @@ import javafx.stage.Stage;
  */
 public class MainGraphiqueParametreController implements Initializable {
 
-     int laTaille;
-     String lePseudo; 
-     String lImage;
+    //variables globales 
+    int laTaille;
+    String lePseudo;
+    String lImage;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    /**
+     * Récupération des élément FXML ici il y a les comboBox, la choiceBox et
+     * les champs de saisies
+     */
     @FXML
-    RadioButton ComboImage1,ComboImage2,ComboImage3,ComboImage4,ComboImage5,ComboImage6;
-    
+    RadioButton ComboImage1, ComboImage2, ComboImage3, ComboImage4, ComboImage5, ComboImage6;
+
     @FXML
     ChoiceBox ChoiceTheme;
-    
+
     @FXML
     TextField txtPseudo, txtTaille;
-    
+
+    /**
+     * Controle de saisi avant le lancement de la partie
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void bttValidezOnClick(ActionEvent event) throws IOException {
 
         if (!txtPseudo.getText().isEmpty()) {
             if (!txtTaille.getText().isEmpty()) {
                 try {
-                     laTaille = Integer.parseInt(txtTaille.getText());
-                      if(laTaille<=2){
-                     //alert si la taille  de la grille est trop petite 
+                    laTaille = Integer.parseInt(txtTaille.getText());
+                    if (laTaille <= 2) {
+                        //alert si la taille  de la grille est trop petite 
                         Alert alert = new Alert(AlertType.WARNING);
                         alert.setTitle("Attention");
 
@@ -67,16 +79,12 @@ public class MainGraphiqueParametreController implements Initializable {
 
                         alert.showAndWait();
                     } else {
-                          lePseudo = txtPseudo.getText();
-                          
-                          
-                        //Ouvrir un autre fenetre graphisue 
+                        lePseudo = txtPseudo.getText();
+
+                        //Lancer la fenètre de jeu
                         Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueGame.fxml"));
-
                         Scene scene = new Scene(root);
-
                         Stage gameStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
                         gameStage.setScene(scene);
                         gameStage.show();
 
@@ -117,65 +125,106 @@ public class MainGraphiqueParametreController implements Initializable {
         }
 
     }
-    
-    //rendre qu'une seul checkBox coché 
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
-     private void comboImage1Check(ActionEvent event) throws IOException {
-         ComboImage2.setSelected(false);
-         ComboImage3.setSelected(false);
-         ComboImage4.setSelected(false);
-         ComboImage5.setSelected(false);
-         ComboImage6.setSelected(false);
-         lImage =  "image1";
-     }
-     
-      @FXML
-     private void comboImage2Check(ActionEvent event) throws IOException {
-         ComboImage1.setSelected(false);
-         ComboImage3.setSelected(false);
-         ComboImage4.setSelected(false);
-         ComboImage5.setSelected(false);
-         ComboImage6.setSelected(false);
-         lImage =  "image2";
-     }
-     
-      @FXML
-     private void comboImage3Check(ActionEvent event) throws IOException {
-         ComboImage2.setSelected(false);
-         ComboImage1.setSelected(false);
-         ComboImage4.setSelected(false);
-         ComboImage5.setSelected(false);
-         ComboImage6.setSelected(false);
-         lImage =  "image3";
-     }
-     
-      @FXML
-     private void comboImage4Check(ActionEvent event) throws IOException {
-         ComboImage2.setSelected(false);
-         ComboImage3.setSelected(false);
-         ComboImage1.setSelected(false);
-         ComboImage5.setSelected(false);
-         ComboImage6.setSelected(false);
-         lImage =  "image4";
-     }
-     
-      @FXML
-     private void comboImage5Check(ActionEvent event) throws IOException {
-         ComboImage2.setSelected(false);
-         ComboImage3.setSelected(false);
-         ComboImage4.setSelected(false);
-         ComboImage1.setSelected(false);
-         ComboImage6.setSelected(false);
-         lImage =  "image5";
-     }
-     
-      @FXML
-     private void comboImage6Check(ActionEvent event) throws IOException {
-         ComboImage2.setSelected(false);
-         ComboImage3.setSelected(false);
-         ComboImage4.setSelected(false);
-         ComboImage5.setSelected(false);
-         ComboImage1.setSelected(false);
-         lImage =  "image6";
-     }
+    private void comboImage1Check(ActionEvent event) throws IOException {
+        ComboImage2.setSelected(false);
+        ComboImage3.setSelected(false);
+        ComboImage4.setSelected(false);
+        ComboImage5.setSelected(false);
+        ComboImage6.setSelected(false);
+        lImage = "image1";
+    }
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void comboImage2Check(ActionEvent event) throws IOException {
+        ComboImage1.setSelected(false);
+        ComboImage3.setSelected(false);
+        ComboImage4.setSelected(false);
+        ComboImage5.setSelected(false);
+        ComboImage6.setSelected(false);
+        lImage = "image2";
+    }
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void comboImage3Check(ActionEvent event) throws IOException {
+        ComboImage2.setSelected(false);
+        ComboImage1.setSelected(false);
+        ComboImage4.setSelected(false);
+        ComboImage5.setSelected(false);
+        ComboImage6.setSelected(false);
+        lImage = "image3";
+    }
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void comboImage4Check(ActionEvent event) throws IOException {
+        ComboImage2.setSelected(false);
+        ComboImage3.setSelected(false);
+        ComboImage1.setSelected(false);
+        ComboImage5.setSelected(false);
+        ComboImage6.setSelected(false);
+        lImage = "image4";
+    }
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void comboImage5Check(ActionEvent event) throws IOException {
+        ComboImage2.setSelected(false);
+        ComboImage3.setSelected(false);
+        ComboImage4.setSelected(false);
+        ComboImage1.setSelected(false);
+        ComboImage6.setSelected(false);
+        lImage = "image5";
+    }
+
+    /**
+     * Controle de saisi des comboBox pour que 1 seule soit selectionner à la
+     * fois
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    private void comboImage6Check(ActionEvent event) throws IOException {
+        ComboImage2.setSelected(false);
+        ComboImage3.setSelected(false);
+        ComboImage4.setSelected(false);
+        ComboImage5.setSelected(false);
+        ComboImage1.setSelected(false);
+        lImage = "image6";
+    }
 }

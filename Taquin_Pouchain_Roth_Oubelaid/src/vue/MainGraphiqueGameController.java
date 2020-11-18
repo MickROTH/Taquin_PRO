@@ -20,11 +20,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class MainGraphiqueGameController implements Initializable {
+
     /* 
     *Variables globales correspondant à des objets définis dans la vue (fichier .fxml)
     *Ces variables sont ajoutées à la main et portent le même nom que les fx:id dans Scene Builder
-    */
-    /*@FXML
+     */
+ /*@FXML
     private BorderPane Fond;
     @FXML
     private Label Score; 
@@ -50,32 +51,31 @@ public class MainGraphiqueGameController implements Initializable {
     private MenuItem Charge;
     @FXML
     private MenuItem Quitter;
-    */
+     */
     @FXML
     private ImageView buttonPlay;
     //@FXML
     //private ImageView imageGrille;
 
     private boolean etatBouton;
-    
+
     @FXML
-    public void handleButtonAction(){ //methode pour qu'au clique l'image du bouton se change  en "pause" et inversement en "play"
-        if (true==etatBouton){
-            buttonPlay.setImage(new Image("images/pause.png")); 
-        }if(false==etatBouton){
+    public void handleButtonAction() { //methode pour qu'au clique l'image du bouton se change  en "pause" et inversement en "play"
+        if (true == etatBouton) {
+            buttonPlay.setImage(new Image("images/pause.png"));
+        }
+        if (false == etatBouton) {
             buttonPlay.setImage(new Image("images/play.png"));
         }
-        etatBouton=!etatBouton;
-   
-}
+        etatBouton = !etatBouton;
+
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        etatBouton=true;
+        etatBouton = true;
     }
-    }    
-    
-
-
+}

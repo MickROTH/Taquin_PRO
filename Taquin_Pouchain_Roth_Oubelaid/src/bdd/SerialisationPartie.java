@@ -18,6 +18,11 @@ import partie.Partie;
  */
 public class SerialisationPartie {
 
+    /**
+     * Methode qui permet de sérialisé une partie
+     *
+     * @param laPartie
+     */
     public void serialise(Partie laPartie) {
         //finalPartie partie = new Partie("Dupond", "Jean", 175);
         ObjectOutputStream oos = null;
@@ -40,6 +45,9 @@ public class SerialisationPartie {
         }
     }
 
+    /**
+     * Méthode qui permet de désérialiser une partie
+     */
     public void deserialise() {
         Partie unePartie;
         ObjectOutputStream oos = null;

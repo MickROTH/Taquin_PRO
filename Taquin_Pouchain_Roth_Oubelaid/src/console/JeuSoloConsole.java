@@ -252,8 +252,8 @@ public class JeuSoloConsole extends Application {
                 //connexion à la base de données
                 ConnexionBDD c = new ConnexionBDD(serverName, port, mydatabase, username, password);
                 //Nouvelle partie 
-                //INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('patate' , null, 'SOLO', 'patate', "00:20:30", 10, "20/10/2020")
-                query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, datePartie ) VALUES ('" + lePseudo + "' , null, 'SOLO', '" + lePseudo + "', '" + chrono.getDureeTxt() + "', " + nbDeplacement + ", '" + aujourdhui + "')";
+                //INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, tailleGrille, datePartie ) VALUES ('patate' , null, 'SOLO', 'patate', "00:20:30", 10,3, "20/10/2020")
+                query = "INSERT INTO Partie (J1, J2, typePartie,Gagnant, time , score, tailleGrille, datePartie ) VALUES ('" + lePseudo + "' , null, 'SOLO', '" + lePseudo + "', '" + chrono.getDureeTxt() + "', " + nbDeplacement + ", "+ laGrille.getGrille().length + ", '"  + aujourdhui + "')";
                 //System.out.println(query);
                 c.insertTuples(query);
             } catch (Exception e) {

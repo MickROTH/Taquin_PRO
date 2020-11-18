@@ -6,18 +6,9 @@
 package vue;
 
 import Console.JeuSoloConsole;
-import bdd.ConnexionBDD;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Application;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -38,19 +25,27 @@ import javafx.stage.Stage;
  */
 public class MainAccueilController implements Initializable {
 
+    /**
+     * Méthode à l'initialisation de la fenètre
+     *
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-    }  
-    
 
-    @FXML
-    ImageView imageFond;
+    }
 
+    /**
+     * Evenement quand la personne veut lancer une partie solo en mode graphique
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void buttAvecSoloOnClick(ActionEvent event) throws IOException {
 
-        //Ouvrir un autre fenetre graphisue 
+        //Ouvrir une fenetre de préparation de nouvelle partie graphique ( parametrage de la partie) 
         Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueParametre.fxml"));
 
         Scene scene = new Scene(root);
@@ -62,20 +57,34 @@ public class MainAccueilController implements Initializable {
 
     }
 
+    /**
+     * Evenement quand la personne veut lancer une partie solo dans interface
+     * graphique ( en mode console)
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void buttSansSoloOnClick(ActionEvent event) throws IOException {
-        System.out.println("Oh on a cliquer sur moi !");
 
         // il faut cacher la fenetre d'accueil 
+        //Lancer une partie en mode graphique 
         JeuSoloConsole jeu = new JeuSoloConsole();
         String[] arg = new String[10];
         JeuSoloConsole.main(arg);
 
     }
-@FXML
+
+    /**
+     * Evenement quand la personne veut voir le classement des joueurs
+     *
+     * @param event
+     * @throws IOException
+     */
+    @FXML
     private void buttClassementOnClick(ActionEvent event) throws IOException {
 
-       //Ouvrir un autre fenetre graphisue 
+        //Ouvrir la fenetre du classement des joueurs  
         Parent root = FXMLLoader.load(getClass().getResource("MainGraphiqueClassement.fxml"));
 
         Scene scene = new Scene(root);
@@ -86,7 +95,5 @@ public class MainAccueilController implements Initializable {
         paramStage.show();
 
     }
-   
-    
-    
+
 }
