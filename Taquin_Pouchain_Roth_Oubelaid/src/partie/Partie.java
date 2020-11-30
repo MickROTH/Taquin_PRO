@@ -14,20 +14,9 @@ import partie.TypePartie;
  */
 public class Partie implements Serializable {
 
-    /**
-     * @attribute Type de partie (par exemple : SOLO, COOP, VERSUS)
-     */
+   
     private TypePartie type;
-
-    /**
-     * @attribute Grille de taquin sur laquelle se déroule la partie.
-     */
     private Grille grille;
-
-    /**
-     * @attribute Liste des joueurs de cette partie.<br>
-     * Il peut y avoir un ou deux joueurs dans une partie.
-     */
     private Joueur[] joueurs;
 
     /**
@@ -89,7 +78,6 @@ public class Partie implements Serializable {
      * @param type Type de partie (SOLO, COOP ou VERSUS)
      * @param grille La grille de taquin
      * @param j1 Joueur 1
-     * @param j2 Joueur 2
      * @throws IllegalArgumentException Si le type ne fait pas partie des types
      * connus ou s'il n'y a pas exactement 1 ou 2 joueur(s) ou si le nombre de
      * joueurs ne correspond pas au type de partie (ex : 2 joueurs pour une

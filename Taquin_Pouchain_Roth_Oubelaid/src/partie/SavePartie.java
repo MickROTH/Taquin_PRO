@@ -23,14 +23,14 @@ public class SavePartie {
 
     /**
      * Le constructeur de la classe sauvegarde des données de partie si la
-     * partie est solo alors j2 -> null
+     * partie est solo alors j2 est null
      *
-     * @param j1
-     * @param j2
-     * @param typePartie_tailleGrille
-     * @param gagnant
-     * @param time
-     * @param score
+     * @param j1 correspond au joueur numéro 1
+     * @param j2 correspond au joueur numéro 2
+     * @param typePartie_tailleGrille parametre qui représente la taille de la grille et le type de partie 
+     * @param gagnant correspond au nom du joueur gagnant 
+     * @param time correspond au temps écouler de la partie 
+     * @param score est le score de deplacement de cases 
      */
     public SavePartie(String j1, String j2, String typePartie_tailleGrille, String gagnant, String time, String score) {
         this.j1 = j1;
@@ -93,6 +93,10 @@ public class SavePartie {
      */
     public String getScore() {
         return score;
+    }
+
+    public String getType() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

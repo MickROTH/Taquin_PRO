@@ -28,11 +28,11 @@ public class ConnexionBDD {
     /**
      * Constructeur de la classe ConnexionBDD
      *
-     * @param h
-     * @param po
-     * @param dbn
-     * @param u
-     * @param p
+     * @param h correspond à l'host 
+     * @param po correspont au port 
+     * @param dbn le nom de la base de donnée
+     * @param u le nom d'utilisateur pour ce connecter à la base 
+     * @param p mot de passe de la base de donnée 
      */
     public ConnexionBDD(String h, String po, String dbn, String u, String p) {
         this.host = h;

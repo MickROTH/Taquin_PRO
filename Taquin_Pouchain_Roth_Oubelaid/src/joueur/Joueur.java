@@ -12,9 +12,7 @@ import java.io.Serializable;
  * @author Mick
  */
 public class Joueur implements Serializable{
-    /**
-     * @attribute Pseudo du joueur
-     */
+   
     private String pseudo;
     
     /**

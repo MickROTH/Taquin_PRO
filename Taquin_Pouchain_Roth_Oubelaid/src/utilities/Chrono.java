@@ -77,7 +77,7 @@ public class Chrono {
     /**
      * Recupération de la durée en seconde
      *
-     * @return
+     * @return la durée sous forme d'un long represente les secondes 
      */
     public long getDureeSec() {
         return duree / 1000;
@@ -86,7 +86,7 @@ public class Chrono {
     /**
      * Récupération de la durée en milliseconde
      *
-     * @return
+     * @return la durée sous forme d'un long represente les milisecondes 
      */
     public long getDureeMs() {
         return duree;
@@ -95,7 +95,7 @@ public class Chrono {
     /**
      * Récupération de la durée en texte
      *
-     * @return
+     * @return retourne le temps en texte 
      */
     public String getDureeTxt() {
         return timeToHMS(getDureeSec());
@@ -104,8 +104,8 @@ public class Chrono {
     /**
      * conversion de l'heure en texte
      *
-     * @param tempsS
-     * @return
+     * @param tempsS le temps en long passer en parametre à convertir 
+     * @return la chaine de caractere du temps écouler 
      */
     public static String timeToHMS(long tempsS) {
 
