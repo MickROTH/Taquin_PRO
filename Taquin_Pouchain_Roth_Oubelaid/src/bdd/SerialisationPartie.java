@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import partie.Partie;
+import partie.SavePartie;
 
 /**
  *
@@ -21,9 +21,9 @@ public class SerialisationPartie {
     /**
      * Methode qui permet de sérialisé une partie
      *
-     * @param laPartie
+     * @param laPartie c'est la partie qui nécéssite une sérialisation 
      */
-    public void serialise(Partie laPartie) {
+    public void serialise(SavePartie laPartie) {
         //finalPartie partie = new Partie("Dupond", "Jean", 175);
         ObjectOutputStream oos = null;
         try {
@@ -49,13 +49,13 @@ public class SerialisationPartie {
      * Méthode qui permet de désérialiser une partie
      */
     public void deserialise() {
-        Partie unePartie;
+        SavePartie unePartie;
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
         try {
             final FileInputStream fichierIn = new FileInputStream("personne.ser");
             ois = new ObjectInputStream(fichierIn);
-            unePartie = (Partie) ois.readObject();
+            unePartie = (SavePartie) ois.readObject();
             System.out.println("Personne : ");
             System.out.println("nom : " + unePartie.getType());
         } catch (final java.io.IOException e) {

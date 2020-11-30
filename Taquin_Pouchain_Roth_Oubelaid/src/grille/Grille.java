@@ -54,7 +54,7 @@ public class Grille implements Serializable {
     /**
      * Permet de récuperer la grille
      *
-     * @return Case[][]
+     * @return Case[][] retourne la grille de jeu 
      */
     public Case[][] getGrille() {
         return grilleCase;
@@ -63,16 +63,19 @@ public class Grille implements Serializable {
     /**
      * Permet de modifier l'image de la grille
      *
-     * @param chemin
+     * @param chemin le nouveau chemin de l'image 
      */
     public void setImage(String chemin) {
         this.image = chemin;
     }
 
     /**
-     * Affichage de la grille sous la forme [ 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8]
+     * 
      *
-     * @return String
+     * @return String Affichage de la grille sous la forme 
+     * [ 0 | 1 | 2 
+     * | 3 | 4 | 5 
+     * | 6 | 7 | 8]
      */
     @Override
     public String toString() {
@@ -99,7 +102,7 @@ public class Grille implements Serializable {
      * cette méthode servira principalement a comparer si la grille courante, à
      * la grille objectif ( voir si la partie est fini)
      *
-     * @param autreGrille
+     * @param autreGrille la deuxieme grille a comparer
      * @return boolean ui dis si oui (true) quand les deux élément sont pareils
      * et false dans le cas inverse
      */

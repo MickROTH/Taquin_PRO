@@ -39,7 +39,7 @@ public class Case implements Serializable {
     
     /**
      * Constructeur qui passe en paramètre une case 
-     * @param c 
+     * @param c est la case modele 
      */
     public Case(Case c) {
         this.valeur = c.valeur; 
@@ -50,7 +50,7 @@ public class Case implements Serializable {
     
     /**
      * permet de récupérer la valeur de la case 
-     * @return 
+     * @return  retourne la valeur de la case 
      */
     public int getValue(){
         return this.valeur;
@@ -58,7 +58,7 @@ public class Case implements Serializable {
     
     /**
      * permet de modifier la valeur de la case
-     * @param uneVal 
+     * @param uneVal modifier la valeur de la case 
      */
 
     void setValue(int uneVal ){
@@ -67,7 +67,7 @@ public class Case implements Serializable {
     
      /**
      * permet de permuter les coordonnée de deux cases
-     * @param uneVal 
+     * @param autreCase est la case qu'il faut permuter avec la case courante 
      */
     void permuteCoo(Case autreCase ){
         Case temp = new Case();
@@ -81,7 +81,7 @@ public class Case implements Serializable {
 
     /**
      * Afficher la valeur de la case 
-     * @return 
+     * @return  retourne les infrmation essentielle en format texte 
      */
    @Override
    public String toString(){

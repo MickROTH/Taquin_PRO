@@ -28,8 +28,8 @@ public class MainAccueilController implements Initializable {
     /**
      * Méthode à l'initialisation de la fenètre
      *
-     * @param url
-     * @param rb
+     * @param url 
+     * @param rb  
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -37,9 +37,9 @@ public class MainAccueilController implements Initializable {
     }
 
     /**
-     * Evenement quand la personne veut lancer une partie solo en mode graphique
+     * 
      *
-     * @param event
+     * @param event Evenement quand la personne veut lancer une partie solo en mode graphique 
      * @throws IOException
      */
     @FXML
@@ -58,10 +58,10 @@ public class MainAccueilController implements Initializable {
     }
 
     /**
-     * Evenement quand la personne veut lancer une partie solo dans interface
-     * graphique ( en mode console)
+     * 
      *
-     * @param event
+     * @param eventEvenement quand la personne veut lancer une partie solo dans interface
+     * graphique ( en mode console)
      * @throws IOException
      */
     @FXML
@@ -76,9 +76,9 @@ public class MainAccueilController implements Initializable {
     }
 
     /**
-     * Evenement quand la personne veut voir le classement des joueurs
+     * 
      *
-     * @param event
+     * @param event Evenement quand la personne veut voir le classement des joueurs
      * @throws IOException
      */
     @FXML
