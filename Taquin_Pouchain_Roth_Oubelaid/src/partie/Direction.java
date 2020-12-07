@@ -20,4 +20,3 @@ public enum Direction {
     DROITE,
     NONE,
 }
-// coucou j'ai fini
